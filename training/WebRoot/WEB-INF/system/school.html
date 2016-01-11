@@ -1,0 +1,57 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="schoolInit" id="${id}">
+	<div data-options="region:'west',border:false" style="width:180px;">
+            <ul id="schoolTree"></ul>
+	</div>
+	<div class="easyui-layout"  data-options="region:'center'" style="width: 100%;height:100%">
+		<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+			校区名称：&nbsp;&nbsp;<input name="schoolName" id="schoolNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+			<a href="#" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+		</div>
+		<div data-options="region:'center',border:false" >
+			<div id="schoolList" style="border-left: none"></div>
+		</div>
+	</div>
+	
+	<div id="editDialog">
+		<form method="post" id="editForm" >
+			<table border="0" cellpadding="0" cellspacing="0" style="width: 100%">
+				<tr>
+					<td class="tdFirstTitle">校区编号：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="schoolCode" id="schoolCode"  style="width: 250px;border: 0px" readonly="readonly" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">校区名称：</td>
+					<td class="tdContent">
+						<input type="text" name="schoolName" id="schoolName" class="contentInput"/>
+						<span style="color: red;">*</span>
+						<input type="hidden" name="parentSchool.schoolId" id="parentID" />
+						<input type="hidden" name="schoolId" id="schoolId" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">电话：</td>
+					<td class="tdContent">
+						<input type="text" name="tel" id="tel" class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">地址：</td>
+					<td class="tdContent">
+						<input type="text" name="address" id="address" class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">状态：</td>
+					<td class="tdContent">
+						<select id="status" class="easyui-combobox" name="status" style="width:250px;" data-options="editable:false" >  
+						    <option value="1">启用</option>  
+						    <option value="0">停用</option>  
+						</select>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

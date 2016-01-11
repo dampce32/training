@@ -1,0 +1,92 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="todayLessonsInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		校区:&nbsp;&nbsp;<input id="schoolSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		日期:&nbsp;&nbsp;<input id="dateSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false" style="width: 100%;height: 100%">
+		<div id="viewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	<div id="pointNameDialog">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'west',split:true,title:'学员名单'" style="width:120;">
+				<ul id="studentTree"></ul>
+			</div>
+			<div data-options="region:'center',title:'操作面板'" style="width: 100%;height: 100%">
+				<form method="post" id="lessonInfoForm" name="lessonInfoForm">
+					<input type="hidden" name="lessonDegreeId" id="lessonDegreeId"/>
+					<input type="hidden" name="endTime" id="endTime"/>
+					<input type="hidden" name="lessons" id="lessons"/>
+					<input type="hidden" name="teacher.userId" id="teacherId"/>
+					<input type="hidden" name="classroom.classroomId" id="classroomId"/>
+					<input type="hidden" name="user.userId" id="userId"/>
+					<input type="hidden" name="clazz.classId" id ="classId"/>
+					<input type="hidden" name="lessonType" id ="lessonType"/>
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="tdFirstTitle">上课日期：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="lessonDegreeDate" id="lessonDegreeDate" style="width:100;border:0" readonly="readonly"/>
+								<input type="text" name="startTime" id="startTime" style="width:100;border:0" readonly="readonly"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">本课课题：</td>
+							<td class="tdContent">
+								<input type="text" name="subject" id="subject" style="width:350;"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">备注/作业：</td>
+							<td class="tdContent">
+								<textarea name="note" id="note" style="width:400px;height:100px"></textarea>
+								<a href="#" class="easyui-linkbutton" id="workUpdate" style="margin-left:50" data-options="iconCls:'icon-edit'" style="cursor: pointer;">更 新</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div data-options="region:'south',split:true" style="height:300">
+				<div class="easyui-layout" data-options="fit:true">
+					<div data-options="region:'center',border:false" style="width: 100%;height: 100%">
+						<div id="pointNameList"></div>
+					</div>
+					<div data-options="region:'south',border:false" style="height: 32">
+						<div class="easyui-pagination" id="pointNamePager" style="background:#efefef;border:1px solid #ccc;"></div>
+					</div>
+					<div id="savePointDialog">
+						<form method="post" id="savePointForm" name="savePointorm">
+							<input type="hidden" name="attendId" id="attendId"/>
+							<input type="hidden" name="lessonDegree.lessonDegreeId" id="lessonDegreeId"/>
+							<input type="hidden" name="lessonDegree.clazz.classId" id="classId"/>
+							<input type="hidden" name="lessonDegree.lessons" id="lessons"/>
+							<input type="hidden" name="lessonDegree.lessonType" id="lessonType"/>
+							<input type="hidden" name="lessonDegree.lessonStatus" id="lessonStatus"/>
+							<table border="0" cellpadding="2" cellspacing="1" style="width: 100%">
+								<tr>
+									<td class="tdTitle">状态：</td>
+									<td>
+										<input type="radio" name="status" value="0"/>出勤
+										<input type="radio" name="status" value="1"/>迟到
+										<input type="radio" name="status" value="2"/>早退
+										<input type="radio" name="status" value="3"/>旷课
+										<input type="radio" name="status" value="4"/>请假
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">备注：</td>
+									<td>
+										<input name="note" id="note" style="width:350px;"/>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

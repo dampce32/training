@@ -1,0 +1,89 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="reportConfigInit" id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent"> 
+		报表编号：&nbsp;&nbsp;<input id="reportCodeSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		报表名称：&nbsp;&nbsp;<input id="reportNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false" style="width: 100%;height:100%">
+		<div id="viewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	
+	<div id="editDialog">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" style="height: 320px;overflow: hidden;padding:5px"> 
+				<form method="post" id="editForm"  enctype="multipart/form-data">
+					<input type="hidden" name="reportConfigId" id="reportConfigId" />
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="tdFirstTitle" >报表类型：</td>
+							<td class="tdFirstContent">
+								<select id="reportKind" class="easyui-combobox" name="reportKind" style="width:400px;">  
+								    <option value="0">模块报表</option>  
+								    <option value="1">统计报表</option>  
+								</select> 
+								<span style="color:red">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">报表编号：</td>
+							<td class="tdContent">
+								<input type="text" name="reportCode" id="reportCode" class="text" style="width: 400px" size="40" />
+								<span style="color:red">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle" >报表名称：</td>
+							<td class="tdContent">
+								<input type="text" name="reportName" id="reportName" class="text" style="width: 400px" size="40" />
+								<span style="color:red">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">参数Sql：</td>
+							<td class="tdContent" style="padding-top:5px">
+								<textarea style="width: 400px;height: 90px" name="reportParamsSql" id="reportParamsSql"></textarea>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">明细网格Sql：</td>
+							<td class="tdContent" style="padding-top:5px">
+								<textarea style="width: 400px;height: 90px" name="reportDetailSql" id="reportDetailSql"></textarea>
+								<span style="color:red">*</span>
+							</td>
+						</tr>
+						<tr>
+		    				<td class="tdTitle">报表模板文件：</td>
+		    				<td class="tdContent">
+		    					<input type="file" size="30" name="file" id="file" />
+		    					<span style="color:red">*</span>
+		    				</td>
+		    			</tr>
+					</table>
+					
+					<input type="hidden" name="reportParamConfigIds"  id="reportParamConfigIds" />
+					<input type="hidden" name="deleteIds"  id="deleteIds" />
+					<input type="hidden" name="reportParamIds"  id="reportParamIds" />
+					<input type="hidden" name="isNeedChooses"  id="isNeedChooses" />
+				</form>
+			</div>
+			<div data-options="region:'center'" style="width: 100%;height:100%">
+				<div id="reportParamConfigList" ></div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="selectDialog">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" class="queryContent" > 
+				参数编号：&nbsp;&nbsp;<input id="paramCodeSelectDialog" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				<a href="#" class="easyui-linkbutton" id="searchBtnSelectDialog" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false" style="width: 100%;height:100%">
+				<div id="reportParamList"></div>
+			</div>
+		</div>
+	</div>
+</div>

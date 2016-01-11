@@ -1,0 +1,81 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="useCommodityInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent_${id}">
+		领用人：&nbsp;&nbsp;<input id="userSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		领用日期：&nbsp;&nbsp;<input type="text" name="beginDate" id="beginDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="queryInput Wdate" />
+		至&nbsp;<input type="text" name="endDate" id="endDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="queryInput Wdate" />&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="useCommodityViewList_${id}"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager_${id}" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	<div id="editDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" style="height: 140;overflow: hidden;padding:5px">
+				<form method="post" name="editForm" id="editForm_${id}">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="tdFirstTitle">领用日期：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="useDate" id="useDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="Wdate contentInput" />
+								<span style="color: red;">*</span>
+							</td>
+							<td class="tdTitle">总数量：</td>
+							<td class="tdContent">
+								<input type="text" name="qtyTotal" id="qtyTotal"  style="width: 250px;border: 0px" readonly="readonly"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">领用人：</td>
+							<td class="tdContent">
+								<input type="text" name="user.userId" id="user" class="contentInput" />
+								<span style="color: red;">*</span>
+							</td>
+							<td class="tdTitle">经办人：</td>
+							<td class="tdContent">
+								<input type="text" name="handler.userId" id="handler" class="contentInput"/>
+								<span style="color: red;">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">备注：</td>
+							<td class="tdContent" colspan="3">
+								<textarea  style="width: 589px;height:60px" name="note" id="note"></textarea>
+							</td>
+						</tr>
+					</table>
+					<input type="hidden" name="useCommodityId"  id="useCommodityId" />
+					<input type="hidden" name="delUseCommodityDetailIds"  id="delUseCommodityDetailIds" />
+					<input type="hidden" name="isNeedReturns"  id="isNeedReturns" />
+					<input type="hidden" name="returnDates"  id="returnDates" />
+					<input type="hidden" name="returnStatus"  id="returnStatus" />
+					<input type="hidden" name="useCommodityDetailIds"  id="useCommodityDetailIds" />
+					<input type="hidden" name="commodityIds"  id="commodityIds" />
+					<input type="hidden" name="warehouseDetailIds"  id="warehouseDetailIds" />
+					<input type="hidden" name="qtys"  id="qtys" />
+		    	</form>
+			</div>
+			<div data-options="region:'center',border:false" style="width: 100%;height:100%">
+				<div id="detailViewList"></div>
+			</div>
+		</div>
+	</div>
+	<div id="commodityDialog_${id}">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" class="queryContent" id="commodityQueryContent">
+				商品名称：&nbsp;&nbsp;<input id="commodityNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				商品单位：&nbsp;&nbsp;<input id="unitSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				商品类别：&nbsp;&nbsp;<input id="commodityTypeSearch"  type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				<a href="#" class="easyui-linkbutton" id="commoditySearchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="commodityList_${id}"></div>
+			</div>
+			<div data-options="region:'south',border:false" style="height: 32">
+				<div class="easyui-pagination" id="commodityPager_${id}" style="background:#efefef;border:1px solid #ccc;"></div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="storeWarmInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		商品名称：&nbsp;&nbsp;<input id="commodityNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		商品单位：&nbsp;&nbsp;<input id="unitSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		商品类别：&nbsp;&nbsp;<input id="commodityTypeSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false" style="width: 100%;height: 100%">
+		<div id="qtyWarmList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+</div>

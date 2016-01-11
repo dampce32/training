@@ -1,0 +1,63 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="reminderInit" id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent"> 
+		标题：&nbsp;&nbsp;<input id="reminderCodeSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查询</a>
+	</div>
+	<div data-options="region:'center',border:false" >
+		<div id="viewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	
+	<div id="editDialog">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" style="height: 70px;overflow: hidden;padding:5px"> 
+				<form id = "editForm" method="post">
+					<input type="hidden" name="reminderId" id="reminderId" />
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="tdFirstTitle">标题：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="title" id="title" class="contentInput"/>
+								<span style="color: red;">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">状态：</td>
+							<td class="tdContent">
+								<select id="status" class="easyui-combobox" name="status" style="width:250px;" data-options="editable:false" >  
+								    <option value="1">启用</option>  
+								    <option value="0">停用</option>  
+								</select>
+								<span style="color: red;">*</span>
+							</td>
+						</tr>
+					</table>
+					<input type="hidden" name="delReminderDetailIds"  id="delReminderDetailIds" />
+					<input type="hidden" name="reminderDetailIds"  id="reminderDetailIds" />
+					<input type="hidden" name="reminderItemIds"  id="reminderItemIds" />
+				</form>
+			</div>
+			<div data-options="region:'center',border:false" >
+				<div id="reminderDetail" ></div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="selectDialog">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" class="queryContent" id="querySelectDialog"> 
+				标题：&nbsp;&nbsp;<input id="title" type="text" size="12" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				<a href="#" class="easyui-linkbutton" id="searchBtnSelectDialog" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false" >
+				<div id="reminderItemList"></div>
+			</div>
+		</div>
+	</div>
+	
+	<div id="reminderRoleDialog">
+		<div id="reminderRoleList"></div>
+	</div>
+</div>

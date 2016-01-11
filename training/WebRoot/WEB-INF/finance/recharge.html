@@ -1,0 +1,21 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="rechargeInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryPaymentContent">
+		校区：&nbsp;&nbsp;<input id="schoolSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		类型：&nbsp;&nbsp;<select id="paymentTypeSearch" class="easyui-combobox" name="paymentTypeSearch" style="width:100px;" data-options="editable:false">  
+			    <option value="">全部</option>
+			    <option value="1">交费</option>
+			    <option value="2">退费</option>   
+			    <option value="3">借款 </option>
+			    <option value="4">扣除借款 </option>  
+			    <option value="5">业务扣费</option> 
+			    <option value="6">业务退费</option> 
+			</select>&nbsp;&nbsp;&nbsp;
+		日期：<input id="transactionDateBeginSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>
+		至<input id="transactionDateEndSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+		<input type="hidden" id="studentId" />
+		<a href="#" class="easyui-linkbutton" id="searchBtnPayment" data-options="iconCls:'icon-search'" style="cursor: pointer;">查询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="paymentList"></div>
+	</div>
+</div>

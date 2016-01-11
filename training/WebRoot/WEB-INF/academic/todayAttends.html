@@ -1,0 +1,50 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="todayAttendsInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		学号:&nbsp;&nbsp;<input id="studentSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		校区:&nbsp;&nbsp;<input id="schoolSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		日期:&nbsp;&nbsp;<input id="dateSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false" style="width: 100%;height: 100%">
+		<div id="viewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	
+	<div id="editDialog">
+		<form method="post" name="editForm" id="editForm">
+			<input type="hidden" name="attendId" id="attendId"/>
+			<input type="hidden" name="lessonDegree.lessonDegreeId" id="lessonDegreeId"/>
+			<input type="hidden" name="lessonDegree.clazz.classId" id="classId"/>
+			<input type="hidden" name="lessonDegree.lessonStatus" id="lessonStatus"/>
+			<input type="hidden" name="lessonDegree.lessons" id="scLessons"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">出勤状态：</td>
+					<td class="tdFirstContent">
+						<select name="status" id="status" class="easyui-combobox" style="width:250" data-options="editable:false"  >
+							<option value="0">正常</option>
+							<option value="1">迟到</option>
+							<option value="2">早退</option>
+							<option value="3">旷课</option>
+							<option value="4">请假</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">课时：</td>
+					<td class="tdContent">
+						<input type="text" name="lessons" id="lessons" class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td class="tdContent">
+						<input type="text" name="note" id="note" class="contentInput"/>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>

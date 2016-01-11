@@ -1,0 +1,42 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="stuAccountInit"  id="${id}">
+	<div data-options="region:'north',border:false" style="height: 70px;overflow: hidden;padding:5px" id="queryPaymentContent"> 
+		类型：&nbsp;&nbsp;<select id="paymentTypeSearch" class="easyui-combobox" name="paymentTypeSearch" style="width:100px;" data-options="editable:false">  
+			    <option value="">全部</option>
+			    <option value="1">交费</option>
+			    <option value="2">退费</option>   
+			    <option value="3">借款 </option>
+			    <option value="4">扣除借款 </option>  
+			    <option value="5">业务扣费</option> 
+			    <option value="6">业务退费</option> 
+			</select>&nbsp;&nbsp;&nbsp;
+		日期：&nbsp;&nbsp;<input id="transactionDateBeginSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>
+		至<input id="transactionDateEndSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+		<input type="hidden" id="studentId" />
+		<a href="#" class="easyui-linkbutton" id="searchBtnPayment" data-options="iconCls:'icon-search'" style="cursor: pointer;">查询</a>
+		<div class = "easyui-panel" id="paymentPanel"  closed="false" style="padding: 3px;margin-top: 6px;height: 30px">
+			<table border="0" cellpadding="0" cellspacing="0">
+              		<tr>
+					<td class="table-title" style="width:80px"> 可用余额:</td>
+					<td class="table-value"> 
+						<input type="text" name="availableMoney" id="availableMoney" style="width:100px;border: 0px;color: red;" readonly="readonly">
+					</td>
+					<td class="table-title" style="width:80px"> 消费总额:</td>
+					<td class="table-value"> 
+						<input type="text" name="consumedMoney" id="consumedMoney" style="width:100px;border: 0px" readonly="readonly">
+					</td>
+					<td class="table-title" style="width:80px"> 借款金额:</td>
+					<td class="table-value"> 
+						<input type="text" name="arrearageMoney" id="arrearageMoney" style="width:100px;border: 0px" readonly="readonly">
+					</td>
+					<td class="table-title" style="width:80px"> 借款到期:</td>
+					<td class="table-value"> 
+						<input type="text" name="creditExpiration" id="creditExpiration" style="width:100px;border: 0px" readonly="readonly">
+					</td>
+				</tr>
+           	</table>
+		</div>
+	</div>
+	<div data-options="region:'center',border:false" >
+		<div id="paymentList"></div>
+	</div>
+</div>

@@ -1,0 +1,36 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="potentialStuStatusInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		潜在生源状态名称：&nbsp;&nbsp;<input id="potentialStuStatusNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	<div id="editDialog">
+		<form method="post" name="editForm" id="editForm">
+			<input type="hidden" name="potentialStuStatusId" id = "potentialStuStatusId" >
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">名称：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="potentialStuStatusName" id="potentialStuStatusName"  class="contentInput" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">状态：</td>
+					<td class="tdContent">
+						<select id="status" class="easyui-combobox" name="status" style="width:250px;" data-options="editable:false">  
+						    <option value="1">启用</option>  
+						    <option value="0">禁用</option>  
+						</select>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>

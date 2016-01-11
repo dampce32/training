@@ -1,0 +1,77 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="returnCommodityInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		归还人：&nbsp;&nbsp;<input id="returnerSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		归还日期：&nbsp;&nbsp;<input type="text" name="beginDate" id="beginDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="queryInput Wdate"/>
+		至&nbsp;<input type="text" name="endDate" id="endDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="queryInput Wdate"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="returnCommodityViewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	<div id="editDialog">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" style="height: 140;overflow: hidden;padding:5px">
+				<form method="post" name="editForm" id="editForm">
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="tdFirstTitle">归还日期：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="returnDate" id="returnDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="contentInput Wdate"/>
+								<span style="color: red;">*</span>
+							</td>
+							<td class="tdFirstTitle">总数量：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="qtyTotal" id="qtyTotal"  style="border: 0px" class="contentInput" readonly="readonly"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">归还人：</td>
+							<td class="tdContent">
+								<input type="text" name="user.userId" id="user" class="contentInput"/>
+								<span style="color: red;">*</span>
+							</td>
+							<td class="tdTitle">经办人：</td>
+							<td class="tdContent">
+								<input type="text" name="handler.userId" id="handler" class="contentInput"/>
+								<span style="color: red;">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">备注：</td>
+							<td class="tdContent" colspan="3">
+								<textarea  style="width: 590px;height:60" name="note" id="note"></textarea>
+							</td>
+						</tr>
+					</table>
+					<input type="hidden" name="returnCommodityId"  id="returnCommodityId" />
+					<input type="hidden" name="delReturnCommodityDetailIds"  id="delReturnCommodityDetailIds" />
+					<input type="hidden" name="returnCommodityDetailIds"  id="returnCommodityDetailIds" />
+					<input type="hidden" name="useCommodityDetailIds"  id="useCommodityDetailIds" />
+					<input type="hidden" name="warehouseDetailIds"  id="warehouseDetailIds" />
+					<input type="hidden" name="qtys"  id="qtys" />
+		    	</form>
+			</div>
+			<div data-options="region:'center',border:false" >
+				<div id="detailViewList"></div>
+			</div>
+		</div>
+	</div>
+	<div id="useCommodityDetailDialog">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" class="queryContent" id="useCommodityDetailQueryContent">
+				商品名称：&nbsp;&nbsp;<input id="commodityNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				领用人：&nbsp;&nbsp;<input id="userSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+				<a href="#" class="easyui-linkbutton" id="useCommodityDetailSearchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+			</div>
+			<div data-options="region:'center',border:false" >
+				<div id="useCommodityDetailList"></div>
+			</div>
+			<div data-options="region:'south',border:false" style="height: 32">
+				<div class="easyui-pagination" id="useCommodityDetailPager" style="background:#efefef;border:1px solid #ccc;"></div>
+			</div>
+		</div>
+	</div>
+</div>

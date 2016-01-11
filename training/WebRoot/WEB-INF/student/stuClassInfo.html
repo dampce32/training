@@ -1,0 +1,120 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="stuClassInfoInit"  id="${id}">
+	<div data-options="region:'center',border:false" style="width: 100%;height: 100%">
+		<div id="stuClassInfoList"></div>
+	</div>
+	<input type="hidden" id="studentId"/>
+	<div id="browseDialog">
+		<form method="post" id="browseForm">
+			<div id="stuClassPanel" class="easyui-panel">
+				<table border="0" cellpadding="0" cellspacing="0" style="width: 100%">
+					<tr>
+						<td class="tdTitle">学号：</td>
+						<td>
+							<input name="studentId" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">姓名：</td>
+						<td>
+							<input name="studentName" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">班号：</td>
+						<td>
+							<input name="classId" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">班级：</td>
+						<td>
+							<input name="className" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">选班日期：</td>
+						<td>
+							<input name="selectDate" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">选班状态：</td>
+						<td>
+							<input name="scStatus" id="scStatus" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">报名点：</td>
+						<td>
+							<input name="selectSchoolName" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">备注：</td>
+						<td>
+							<input name="note" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">经办人：</td>
+						<td>
+							<input name="userName" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="lessonPanel" class="easyui-panel">
+				<table border="0" cellpadding="2" cellspacing="1" style="width: 100%">
+					<tr>
+						<td class="tdTitle">上课地点：</td>
+						<td>
+							<input name="lessonSchoolName" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">课时进度：</td>
+						<td>
+							<span id="showProgress"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">出勤次数：</td>
+						<td>
+							<input name="factCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">迟到次数：</td>
+						<td>
+							<input name="lateCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">早退次数：</td>
+						<td>
+							<input name="advanceCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">旷课次数：</td>
+						<td>
+							<input name="truancyCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">请假次数：</td>
+						<td>
+							<input name="leaveCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">补课次数：</td>
+						<td>
+							<input name="fillCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</form>
+	</div>
+</div>

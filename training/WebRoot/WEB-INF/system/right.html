@@ -1,0 +1,47 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="rightInit" id="${id}" rightId="${rightId}">
+	<div data-options="region:'west',border:false" style="width:180px;">
+            <ul id="rightTree_${id}"></ul>
+	</div>
+	<div class="easyui-layout"  data-options="region:'center'" style="width: 100%;height:100%">
+		<div data-options="region:'north',border:false" class="queryContent" id="queryContent_${id}">
+			权限名称：&nbsp;&nbsp;<input name="rightName" id="rightNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+			<a href="#" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+		</div>
+		<div data-options="region:'center',border:false" style="width: 100%;height:100%">
+			<div id="rightList_${id}" style="border-left: none"></div>
+		</div>
+	</div>
+	
+	<div id="editDialog_${id}">
+		<form method="post" id="editForm_${id}" >
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">权限名称：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="rightName" id="rightName" class="contentInput" />
+						<span style="color: red;">*</span>
+						<input type="hidden" name="parentRight.rightId" id="parentID" />
+						<input type="hidden" name="rightId" id="rightId" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">权限Url：</td>
+					<td class="tdContent">
+						<input type="text" name="rightUrl" id="rightUrl" class="contentInput" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">权限类型：</td>
+					<td  class="tdContent">
+						<select id="kind" class="easyui-combobox" name="kind" class="tdContent" style="width: 250px" data-options="editable:false" >  
+						    <option value="1">Url权限</option>  
+						    <option value="2">界面按钮权限</option>  
+						    <option value="3">数据显示</option>  
+						</select>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

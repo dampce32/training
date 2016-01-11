@@ -1,0 +1,63 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="courseInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		课程名称：&nbsp;&nbsp;<input id="courseNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		课程类别：&nbsp;&nbsp;<input id="courseTypeSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	
+	<div id="editDialog">
+		<form method="post" name="editForm" id="editForm">
+			<input type="hidden" name="courseId" id = "courseId" >
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">名称：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="courseName" id="courseName" class="contentInput" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">价格：</td>
+					<td class="tdContent">
+						<input type="text" name="unitPrice" id="unitPrice" class="easyui-numberbox" data-options="precision:2" style="width: 250px"  >
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">单位：</td>
+					<td class="tdContent">
+						<select id="courseUnit" name="courseUnit" class="easyui-combobox" style="width: 250px" data-options="editable:false" >					
+							<option value="课时" >课时</option>
+							<option value="学期">学期</option>
+						</select>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">类型：</td>
+					<td class="tdContent">
+						<input type="text" name="courseType.courseTypeId" id="courseType" style="width:250px" >
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">状态：</td>
+					<td class="tdContent">
+						<select id="status" name="status" class="easyui-combobox" style="width: 250px" data-options="editable:false" >					
+							<option value="0">禁用</option>
+							<option value="1">启用</option>
+						</select>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>
+

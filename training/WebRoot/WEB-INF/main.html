@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" >
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>教育管理系统</title>
+	<link rel="stylesheet" type="text/css" href="style/common.css">
+	<link rel="stylesheet" type="text/css" href="style/v1/easyui/easyui.css">
+	<link rel="stylesheet" type="text/css" href="style/v1/icon.css">
+	
+	<link rel="stylesheet" type="text/css" href="style/v1/main.css">
+	<script type="text/javascript" src="js/common/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/common/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="js/common/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="js/common/jquery.xLazyLoader.js"></script>
+	<script type="text/javascript" src="js/common/serializeForm.js"></script>
+	<script type="text/javascript" src="js/common/commons-ajaxclient.js"></script>
+	<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="js/common/csit.core.js"></script>
+	<script type="text/javascript" src="js/common/mask.js"></script>
+	<script type="text/javascript" src="js/common/training.cache.js"></script>
+	<script type="text/javascript" src="js/common/dateUtil.js"></script>
+	<script type="text/javascript" src="js/main/main.js"></script>
+</head>
+<body class="easyui-layout" id="all-body" >
+<div region="north" id="index-north" border="false">
+	<div  id="index-north-bd">
+			<div id="index-north-bd-left" class="f-l">
+            	<span style="font-size: 25;padding-left: 22px">教育管理系统</span>
+            </div>
+            <div id="index-north-bd-right" class="f-r">
+            	 <a href="#" class="easyui-linkbutton" iconCls="icon-edit" id="modifyPwdBtn">修改密码</a>
+                 <a href="#" class="easyui-linkbutton" iconCls="icon-back" id="exitSystem">退出</a>
+            </div>
+    </div>
+</div>
+<div region="west" split="true" title="--------导航菜单--------" icon="icon-none" id="index-left">
+  <ul id="rightTree"></ul>
+</div>
+
+<div region="center" style="overflow: hidden;"  border="false">
+      <div id="tabs" class="easyui-tabs"  fit="true" border="false" >
+                <div title="首页" id="reminder">
+                	<div class="easyui-layout" style="width:100%;height:100%;">
+						<div data-options="region:'center',title:'系统提醒',border:false" >
+							<div style="padding: 10px 0px 0px 10px">
+							 &nbsp; &nbsp; &nbsp;<a href="#" class="easyui-linkbutton" iconCls="icon-search" id="searchReminder">刷新</a>
+							</div>
+							<table border="0" cellpadding="0" cellspacing="0" id = "reminderTable">
+							</table>
+						</div>
+					</div>
+				</div>
+        </div>
+</div>
+	<div id="mm" class="easyui-menu" style="width:120px">
+		<div id="mm-tabupdate">刷新</div>
+		<div class="menu-sep"></div>
+		<div id="mm-tabclose">关闭</div>
+		<div id="mm-tabcloseother">关闭其他</div>
+		<div id="mm-tabcloseall">关闭全部</div>
+		<div id="mm-tabcloseright">关闭当前右侧</div>
+		<div id="mm-tabcloseleft">关闭当前左侧</div>
+	</div>
+	
+	<div id="modifyPwdDialog">
+			<form id="modifyPwdForm">
+					<table >
+		     		<tr >
+		     			<td>原密码</td>
+		     			<td>
+		     				<input type="password" name ="userPwd" id="userPwd">
+		     			</td>
+		     		</tr>
+		     		<tr>
+		     			<td>新密码</td>
+		     			<td>
+		     				<input type="password" name="newUserPwd" id="newUserPwd">
+		     			</td>
+		     		</tr>
+		     		<tr>
+		     			<td>重新输入新密码</td>
+		     			<td>
+		     				<input type="password" name="newUserPwd2" id="newUserPwd2">
+		     			</td>
+		     		</tr>
+		     	</table>
+			</form>
+		</div>
+</body>
+</html>

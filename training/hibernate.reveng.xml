@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-reverse-engineering PUBLIC "-//Hibernate/Hibernate Reverse Engineering DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-reverse-engineering-3.0.dtd" >
+
+<hibernate-reverse-engineering>
+	<table name="t_bill" catalog="training" class="Bill"></table>
+	<table name="t_billdetail" catalog="training" class="BillDetail"></table>
+	<table name="t_class" catalog="training" class="Clazz"></table>
+	<table name="t_classroom" catalog="training" class="Classroom"></table>
+	<table name="t_commodity" catalog="training" class="Commodity"></table>
+	<table name="t_commoditytype" catalog="training" class="CommodityType"></table>
+	<table name="t_course" catalog="training" class="Course"></table>
+	<table name="t_coursetype" catalog="training" class="CourseType"></table>
+	<table name="t_feeitem" catalog="training" class="FeeItem"></table>
+	<table name="t_holiday" catalog="training" class="Holiday"></table>
+	<table name="t_lessondegree" catalog="training" class="LeassonDegree"></table>
+	<table name="t_media" catalog="training" class="Media"></table>
+	<table name="t_payment" catalog="training" class="Payment"></table>
+	<table name="t_periodtime" catalog="training" class="PeriodTime"></table>
+	<table name="t_potcourse" catalog="training" class="PotCourse"></table>
+	<table name="t_potential" catalog="training" class="Potential"></table>
+	<table name="t_potentialstustatus" catalog="training" class="PotentialStuStatus"></table>
+	<table name="t_recrej" catalog="training" class="RecRej"></table>
+	<table name="t_recrejdetail" catalog="training" class="RecRejDetail"></table>
+	<table name="t_reply" catalog="training" class="Reply"></table>
+	<table name="t_right" catalog="training" class="Right"></table>
+	<table name="t_role" catalog="training" class="Role"></table>
+	<table name="t_roleright" catalog="training" class="RoleRight"></table>
+	<table name="t_school" catalog="training" class="School"></table>
+	<table name="t_store" catalog="training" class="Store"></table>
+	<table name="t_stuclass" catalog="training" class="StuClass"></table>
+	<table name="t_student" catalog="training" class="Student"></table>
+	<table name="t_supplier" catalog="training" class="Supplier"></table>
+	<table name="t_systemconfig" catalog="training" class="SystemConfig"></table>
+	<table name="t_unit" catalog="training" class="Unit"></table>
+	<table name="t_usecommodity" catalog="training" class="UseCommoidty"></table>
+	<table name="t_usecommoditydetail" catalog="training" class="UseCommodityDetail"></table>
+	<table name="t_user" catalog="training" class="User"></table>
+	<table name="t_userrole" catalog="training" class="UserRole"></table>
+	<table name="t_warehouse" catalog="training" class="Warehouse"></table>
+	<table name="t_reminder" catalog="training" class="Reminder"></table>
+	<table name="t_reminderdetail" catalog="training" class="ReminderDetail"></table>
+	<table name="t_reminderitem" catalog="training" class="ReminderItem"></table>
+	<table name="t_stureply" catalog="training" class="StuReply"></table>
+	<table name="t_leave" catalog="training" class="Leave"></table>
+	<table name="t_account" catalog="training" class="Account"></table>
+	<table name="t_income" catalog="training" class="Income"></table>
+	<table name="t_incomeclass" catalog="training" class="IncomeClass"></table>
+	<table name="t_change" catalog="training" class="Change">
+		<primary-key>
+			<generator class="identity"></generator>
+		</primary-key>
+	</table>
+	<table name="t_paymentlog" catalog="training" class="PaymentLog"></table>
+	<table name="t_attend" catalog="training" class="Attend"></table>
+	<table name="t_lessonDegree" catalog="training" class="LessonDegree"></table>
+</hibernate-reverse-engineering>

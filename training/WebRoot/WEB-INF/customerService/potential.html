@@ -1,0 +1,290 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="potentialInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent"> 
+		姓名：&nbsp;&nbsp;<input id="nameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		校区：&nbsp;&nbsp;<input id="schoolSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		课程：&nbsp;&nbsp;<input id="courseSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	
+	<div id="editDialog">
+		<form id = "editForm" method="post">
+			<input type="hidden" name="potentialId" id="potentialId" />
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">姓名：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="potentialName" id="potentialName"  class="contentInput"/><span style="color: red;">*</span>
+					</td>
+					<td class="tdFirstTitle">性别：</td>
+					<td class="tdFirstContent">
+						<select id="sex" class="easyui-combobox" name="sex" style="width:250px;">  
+						    <option value="1">男</option>  
+						    <option value="0">女</option>  
+						</select><span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">称呼：</td>
+					<td class="tdContent">
+						<input type="text" name="appellation" id="appellation"  class="contentInput"/>
+					</td>
+					<td class="tdTitle">校区：</td>
+					<td class="tdContent">
+						<input type="text" id="school" name="school.schoolId"  style="width: 250px" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">咨询日期：</td>
+					<td class="tdContent">
+						<input type="text" name="potentialDate" id="potentialDate"  class="contentInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+						<span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">咨询课程：</td>
+					<td class="tdContent"> 
+						<input type="text" id="potCourse" name="potCourse.potCourseId" class="contentInput" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课规律：</td>
+					<td class="tdContent">
+						<input type="text" name="timeRule" id="timeRule" class="contentInput"/>
+					</td>
+					<td class="tdTitle">电话：</td>
+					<td class="tdContent">
+						<input type="text" name="tel" id="tel" class="contentInput"/><span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">手机：</td>
+					<td class="tdContent">
+						<input type="text" name="mobileTel" id="mobileTel" class="contentInput"/><span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">其他电话：</td>
+					<td class="tdContent">
+						<input type="text" name="tel1" id="tel1" class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">QQ：</td>
+					<td class="tdContent">
+						<input type="text" name="qq" id="qq" class="contentInput" />
+					</td>
+					<td class="tdTitle">电子邮箱：</td>
+					<td class="tdContent">
+						<input type="text" name="email" id="email" class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">获知方式：</td>
+					<td class="tdContent">
+						<input type="text" id="media" name="media.mediaId" class="contentInput" />
+						<span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">状态：</td>
+					<td class="tdContent">
+						<input type="text" id="potentialStuStatus" name="potentialStuStatus.potentialStuStatusId" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>				
+				<tr>
+					<td class="tdTitle">下次回访日期：</td>
+					<td class="tdContent">
+						<input type="text" name="nextReplyDate" id="nextReplyDate"  class="contentInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+					</td>
+					<td class="tdTitle">咨询顾问：</td>
+					<td class="tdContent">
+						<input type="text" id="user" name="user.userId"  class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td colspan="3" class="tdContent">
+						<textarea style="width: 605px;height: 100px" id="note" name="note">
+						</textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="editStuDialog">
+		<form id = "editStuForm" method="post">
+			<input type="hidden" name="studentId" id="studentId" />
+			<input type="hidden" name="potentialId" id="potentialId" />
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">姓名：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="studentName" id="studentName" class="contentInput"/><span style="color: red;">*</span>
+					</td>
+					<td class="tdFirstTitle">称呼：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="appellation" id="appellation" class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">性别：</td>
+					<td class="tdContent">
+						<select id="sex" class="easyui-combobox" name="sex" style="width:250px;" class="contentInput">  
+						    <option value="1">男</option>  
+						    <option value="0">女</option>  
+						</select><span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">类型：</td>
+					<td class="tdContent">
+						<select id="studentType" class="easyui-combobox" name="studentType" style="width:250px;" class="contentInput">  
+						    <option value="1">上班族</option>  
+						    <option value="0">学生</option>  
+						</select><span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">报名日期：</td>
+					<td class="tdContent">
+						<input type="text" name="enrollDate" id="enrollDate"  class="contentInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+						<span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">出生日期：</td>
+					<td class="tdContent">
+						<input type="text" name="birthday" id="birthday" class="contentInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">校区：</td>
+					<td class="tdContent">
+						<input type="text" id="school" name="school.schoolId"  style="width: 250px" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">学习顾问：</td>
+					<td class="tdContent">
+						<input type="text" id="user" name="user.userId"  style="width: 250px" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">电话：</td>
+					<td class="tdContent">
+						<input type="text" name="tel" id="tel" class="contentInput"/><span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">手机：</td>
+					<td class="tdContent">
+						<input type="text" name="mobileTel" id="mobileTel" class="contentInput"/><span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">其他电话：</td>
+					<td class="tdContent">
+						<input type="text" name="tel1" id="tel1" class="contentInput"/>
+					</td>
+					<td class="tdTitle">QQ：</td>
+					<td class="tdContent">
+						<input type="text" name="qq" id="qq"  class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">电子邮箱：</td>
+					<td class="tdContent">
+						<input type="text" name="email" id="email" class="contentInput"/>
+					</td>
+					<td class="tdTitle">地址：</td>
+					<td class="tdContent">
+						<input type="text" name="address" id="address" class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">邮编：</td>
+					<td class="tdContent">
+						<input type="text" name="postCode" id="postCode" class="contentInput"/>
+					</td>
+					<td class="tdTitle">身份证：</td>
+					<td class="tdContent">
+						<input type="text" name="idcard" id="idcard" class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">学历：</td>
+					<td class="tdContent">
+						<input type="text" name="diploma" id="diploma" class="contentInput"/>
+					</td>
+					<td class="tdTitle">获知方式：</td>
+					<td class="tdContent">
+						<input type="text" id="media" name="media.mediaId"  style="width: 250px" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">下次回访日期：</td>
+					<td class="tdContent">
+						<input type="text" name="nextReplyDate" id="nextReplyDate"  class="contentInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+					</td>
+				</tr>				
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td colspan="3" class="tdContent">
+						<textarea style="width: 605px;height: 100px" id="note" name="note">
+						</textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="replyDialog">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'north',border:false" class="queryContent" id="queryReplyContent">
+				结果：&nbsp;&nbsp;<input id="potentialStuStatusSearch" type="text" class="queryInput" />&nbsp;&nbsp;&nbsp; 
+				回访日期：&nbsp;&nbsp;<input id="replyDateSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+				下次回访日期：&nbsp;&nbsp;<input id="nextReplyDateSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+				<a href="#" class="easyui-linkbutton" id="searchReplyBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查询</a>
+			</div>
+			<div data-options="region:'center',border:false">
+				<div id="replyList"></div>
+			</div>
+			<div data-options="region:'south',border:false" style="height: 32">
+				<div class="easyui-pagination" id="pagerReply" style="background: #efefef; border: 1px solid #ccc;"></div>
+			</div>
+			<div id="editReplyDialog">
+				<form id = "editReplyForm" method="post">
+					<input type="hidden" name="replyId" id="replyId" />
+					<input type="hidden" name="potential.potentialId" id="potential" />
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="tdFirstTitle">时间：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="replyDate" id="replyDate" class="contentInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+								<span style="color: red;">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">内容：</td>
+							<td colspan="3" class="tdContent">
+								<textarea style="width: 250px; height: 100px" id="content" name="content" class="contentInput"></textarea>
+								<span style="color: red;">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">结果：</td>
+							<td class="tdContent">
+								<input type="text" id="potentialStuStatus" name="potentialStuStatus.potentialStuStatusId" style="width: 250px" class="contentInput"/>
+								<span style="color: red;">*</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">下次回访日期时间：</td>
+							<td>
+								<input type="text" name="nextReplyDate" id="nextReplyDate" style="width: 250px" size="40" class="Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

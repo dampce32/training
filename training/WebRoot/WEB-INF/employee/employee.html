@@ -1,0 +1,151 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="employeeInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent"> 
+		工号：&nbsp;&nbsp;<input id="userIdSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		姓名：&nbsp;&nbsp;<input id="userNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		校区：&nbsp;&nbsp;<input type="text" id="schoolSearch" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查询</a>
+	</div>
+	<div data-options="region:'center',border:false" >
+		<div id="viewList"></div>
+	</div>
+	
+	<div id="editDialog">
+		<form id = "editForm" method="post">
+			<input type="hidden" name="userId" id="userId" />
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">姓名：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="userName" id="userName" class="contentInput" /><span style="color: red;">*</span>
+					</td>
+					<td class="tdFirstTitle">登陆名称：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="userCode" id="userCode" class="contentInput" /><span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">性别：</td>
+					<td class="tdContent">
+						<select id="sex" class="easyui-combobox" name="sex" style="width:250px;">  
+						    <option value="1">男</option>  
+						    <option value="0">女</option>  
+						</select><span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">出生日期：</td>
+					<td class="tdContent">
+						<input type="text" name="birthday" id="birthday"  style="width: 250px" class="Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">是否兼职：</td>
+					<td class="tdContent">
+						<select id="isPartTime" class="easyui-combobox" name="isPartTime" style="width:250px;">  
+						    <option value="1">是</option>  
+						    <option value="0">否</option>  
+						</select><span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">是否授课：</td>
+					<td class="tdContent">
+						<select id="isTeacher" class="easyui-combobox" name="isTeacher" style="width:250px;">  
+						    <option value="1">是</option>  
+						    <option value="0">否</option>  
+						</select><span style="color: red;">*</span>
+					</td>					
+				</tr>
+				<tr>
+					<td class="tdTitle">任聘日期：</td>
+					<td class="tdContent">
+						<input type="text" name="comeDate" id="comeDate"  style="width: 250px" class="Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+						<span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">离职日期：</td>
+					<td class="tdContent">
+						<input type="text" name="outDate" id="outDate"  style="width: 250px" class="Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">所授课程：</td>
+					<td class="tdContent">
+						<input type="text" name="course" id="course" class="contentInput" />
+					</td>
+					<td class="tdTitle">职务：</td>
+					<td class="tdContent">
+						<input type="text" name="headship" id="headship" class="contentInput" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">毕业学校：</td>
+					<td class="tdContent">
+						<input type="text" name="finishSchool" id="finishSchool" class="contentInput"  />
+					</td>
+					<td class="tdTitle">学历：</td>
+					<td class="tdContent">
+						<input type="text" name="diploma" id="diploma" class="contentInput" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">电话：</td>
+					<td class="tdContent">
+						<input type="text" name="tel" id="tel" class="contentInput" />
+					</td>
+					<td class="tdTitle">电子邮箱：</td>
+					<td class="tdContent">
+						<input type="text" name="email" id="email" class="contentInput" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">身份证号：</td>
+					<td class="tdContent">
+						<input type="text" name="idcard" id="idcard" class="contentInput" />
+					</td>
+					<td class="tdTitle">邮编：</td>
+					<td class="tdContent">
+						<input type="text" name="postCode" id="postCode" class="contentInput" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">家庭地址：</td>
+					<td class="tdContent" colspan="3">
+						<input type="text" name="address" id="address" style="width: 605px"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">基本工资：</td>
+					<td class="tdContent">
+						<input type="text" name="basePay" id="basePay"  style="width: 250px" class="easyui-numberbox"  data-options="min:0,precision:0"/>
+					</td>
+					<td class="tdTitle">课时费：</td>
+					<td class="tdContent">
+						<input type="text" name="hourFee" id="hourFee"  style="width: 250px" class="easyui-numberbox"  data-options="min:0,precision:2"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">校区：</td>
+					<td class="tdContent">
+						<input type="text" id="school" name="school.schoolId"  style="width: 250px" />
+						<span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">状态：</td>
+					<td class="tdContent">
+						<select id="status" class="easyui-combobox" name="status" style="width:250px;">  
+						    <option value="1">启用</option>  
+						    <option value="0">禁用</option>  
+						</select><span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">简历：</td>
+					<td class="tdContent" colspan="3">
+						<textarea  id="resume" name="resume" style="width: 605px;height: 100px">
+						</textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<!-- 用户角色 -->
+	<div id="userRoleDialog">
+		<div id="userRoleList"></div>
+	</div>
+</div>

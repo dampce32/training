@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
+	<classpathentry kind="con" path="melibrary.com.genuitec.eclipse.j2eedt.core.MYECLIPSE_JAVAEE_5_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/com.csit.ehcache2.6.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/com.csit.jcaptcha1.0"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/com.csit.json-lib2.4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/com.csit.mysql5.1"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/com.csit.s2.3.1s3.07h3.3.2"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/com.csit.commons"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="output" path="WebRoot/WEB-INF/classes"/>
+</classpath>

@@ -1,0 +1,16 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="earningsInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		数据依据：&nbsp;&nbsp;<select id="typeSearch" class="easyui-combobox" name="typeSearch" data-options="editable:false">  
+			    <option value="1">充值单</option>
+			    <option value="2">消费单</option>   
+			</select>&nbsp;&nbsp;&nbsp;
+		校区：&nbsp;&nbsp;<input id="schoolSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		日期&nbsp;&nbsp;<input id="transactionDateBeginSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>
+		至<input id="transactionDateEndSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+		<input type="hidden" id="studentId" />
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList"></div>
+	</div>
+</div>

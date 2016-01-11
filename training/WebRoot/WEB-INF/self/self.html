@@ -1,0 +1,25 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="selfInit" id="${id}">
+	<div data-options="region:'north',border:false">
+		<a id="saveBtn" href="#" class="easyui-linkbutton" data-options="plain:true,iconCls:'icon-save'">确定</a>
+	</div>
+	<div data-options="region:'center',border:false" style="width: 100%;">
+		<form method="post" name="editForm" id="editForm">
+			<input type="hidden" name="userId"/>
+			<table border="0" cellpadding="2" cellspacing="1" style="width: 300px">
+				<tr>
+					<td class="tdTitle">用户名称:</td>
+					<td>
+						<input type="text" required="required" name="userName" id="userName" style="width: 150px" size="40" /> 
+					</td>
+					
+				</tr>
+				<tr>
+					<td class="tdTitle">用户登录名:</td>
+					<td>
+						<input type="text" required="required" name="userCode" id="userCode" style="width: 150px" size="40" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

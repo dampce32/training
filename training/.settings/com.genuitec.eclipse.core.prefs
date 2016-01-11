@@ -1,0 +1,4 @@
+#Mon Apr 01 10:30:09 GMT+08:00 2013
+eclipse.preferences.version=1
+validator.Checked=WebRoot/WEB-INF/applicationContext.xml,WebRoot/js/common
+validator.Unchecked=

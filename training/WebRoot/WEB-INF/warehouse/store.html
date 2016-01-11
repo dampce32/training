@@ -1,0 +1,14 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="storeInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		商品：&nbsp;&nbsp;<input type="text" name="commodityNameSearch" id="commodityNameSearch"  class="queryInput" />
+		分类：&nbsp;&nbsp;<input id="commodityTypeSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		仓库：&nbsp;&nbsp;<input type="text" name="warehouseSearch" id="warehouseSearch" class="queryInput" />
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="storeList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+</div>

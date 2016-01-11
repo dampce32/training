@@ -1,0 +1,54 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="supplierInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		供应商名称：&nbsp;&nbsp;<input id="supplierNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false" >
+		<div id="viewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	<div id="editDialog">
+		<form method="post" name="editForm" id="editForm">
+			<input type="hidden" name="supplierId" id = "supplierId" >
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">供应商姓名：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="supplierName" id="supplierName" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">联系人：</td>
+					<td class="tdContent">
+						<input type="text" name="linkMan" id="linkMan"  style="width: 250px" size="40" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">供应商电话：</td>
+					<td class="tdContent">
+						<input type="text" name="tel" id="tel" class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">供应商地址：</td>
+					<td class="tdContent">
+						<input type="text" name="address" id="address" class="contentInput" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">状态：</td>
+					<td class="tdContent">
+						<select id="status" name="status" class="easyui-combobox" data-options="editable:false"  style="width: 250px">					
+							<option value="1">启用</option>
+							<option value="0">禁用</option>
+						</select>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>

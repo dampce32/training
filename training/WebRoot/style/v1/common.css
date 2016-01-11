@@ -1,0 +1,63 @@
+.page-hd {
+	height:30px;
+	vertical-align:bottom;
+	line-height:30px;
+	font-weight:bold;
+	color:#fff;
+	background-image:url(images/rigth_top_bj.gif);
+	margin-top:1px;
+}
+.page-hd-title {
+	float:left;
+	color:#fff;
+	font-size:14px;
+	background-position: bottom;
+	background-image: url(images/rigth_caption_bg.gif);
+	padding:0px 15px;
+	border-left-width: 1px;
+	border-left-style: solid;
+	border-left-color: #0274B1;
+}
+.page-hd-title-rcaption{
+	float:left;
+	width:12px;
+	color:#fff;
+	font-size:14px;
+	background-image: url(images/rigth_rcaption_bg.gif);
+	padding: 0;
+	height: 30px;
+}
+#search{
+margin:4px 2px 0px 2px;}
+#toolbar-btn a{
+display:block;
+float:left;
+margin:3px ;
+}
+.mul-search-panel{
+width:500;
+height:200px;
+padding:10px;
+}
+.mul-search-hd h2{
+float:left;}
+.mul-search-hd-btns{
+margin:-8px 3px 0px 15px;
+}
+.mul-search-bd{
+clear:both;
+margin-top:5px}
+.selectarrcols {
+	width: 202px;
+	height: 23px;
+	border: 0px solid #36c;
+	position: relative
+}
+.page-bd{
+height:800px;}
+.postTable tr{
+	display:block;
+	margin-top: 4px
+}
+
+

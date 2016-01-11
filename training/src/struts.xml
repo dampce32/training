@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+	<!-- 后缀 -->
+	<constant name="struts.action.extension" value="do" />
+	<package name="basePackage" extends="struts-default">
+		<interceptors>
+			<interceptor name="trimInterceptor" class="com.csit.filter.TrimInterceptor"/>
+			<interceptor-stack name="baseStack">
+				<interceptor-ref name="trimInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="baseStack"/>
+		
+		<global-results>
+			<result name="login" type="redirect">/login.html</result>
+			<result name="error">/error.html</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception"/>
+		</global-exception-mappings> 
+		
+	</package>
+	
+	<!--员工端的拦截器-->
+	<package name="userPackage" extends="basePackage">
+		<interceptors>
+			<interceptor name="trimInterceptor" class="com.csit.filter.TrimInterceptor"/>
+			<interceptor name="userLoginInterceptor" class="com.csit.filter.UserLoginVerifyInterceptor"/>
+			<interceptor-stack name="userStack">
+				<interceptor-ref name="trimInterceptor"/>
+				<interceptor-ref name="userLoginInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 配置默认拦截器栈 -->
+		<default-interceptor-ref name="userStack" />
+	</package>
+	
+	<!-- 学生端的拦截器 -->
+	<package name="studentPackage" extends="basePackage">
+		<interceptors>
+			<interceptor name="trimInterceptor" class="com.csit.filter.TrimInterceptor"/>
+			<interceptor name="studentLoginInterceptor" class="com.csit.filter.StudentLoginVerifyInterceptor"/>
+			<interceptor-stack name="studentStack">
+				<interceptor-ref name="trimInterceptor"/>
+				<interceptor-ref name="studentLoginInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 配置默认拦截器栈 -->
+		<default-interceptor-ref name="studentStack" />
+	</package>
+	
+	<!-- 学生员工端都用到的action的拦截器 -->
+	<package name="stuUserPackage" extends="basePackage">
+		<interceptors>
+			<interceptor name="trimInterceptor" class="com.csit.filter.TrimInterceptor"/>
+			<interceptor name="stuUserLoginInterceptor" class="com.csit.filter.StuUserLoginVerifyInterceptor"/>
+			<interceptor-stack name="stuUserStack">
+				<interceptor-ref name="trimInterceptor"/>
+				<interceptor-ref name="stuUserLoginInterceptor"/>
+				<interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<!-- 配置默认拦截器栈 -->
+		<default-interceptor-ref name="stuUserStack" />
+	</package>
+	<!-- 登陆 -->
+	<package name="login" extends="basePackage" namespace="/login">
+		<action name="studentLogin" class="loginAction" method="studentLogin"></action>
+		<action name="userLogin" class="loginAction" method="userLogin"></action>
+		<action name="logout" class="loginAction" method="logout"></action>
+	</package>
+	
+	<!-- 个人信息管理-->
+	<package name="self" namespace="/self" extends="stuUserPackage">
+		<action name="*">
+			<result>/WEB-INF/self/{1}.html</result>
+		</action>
+	</package>
+	<!-- 系统管理 -->
+	<package name="system" namespace="/system" extends="userPackage">
+		<action name="*ReportParam" class="reportParamAction" method="{1}"></action>
+		<action name="*ReportConfig" class="reportConfigAction" method="{1}"></action>
+		<action name="*Reminder" class="reminderAction" method="{1}"></action>
+		<action name="*ReminderItem" class="reminderItemAction" method="{1}"></action>
+		<action name="*School" class="schoolAction" method="{1}"></action>
+		<action name="*UserRole" class="userRoleAction" method="{1}"></action>
+		<action name="*RoleRight" class="roleRightAction" method="{1}"></action>
+		<action name="*Right" class="rightAction" method="{1}"></action>
+		<action name="*Role" class="roleAction" method="{1}"></action>
+		
+		<action name="*User" class="userAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/system/{1}.html</result>
+		</action>
+	</package>
+	
+	<!-- 咨询课程 -->
+	<package name="potCourse" namespace="/potCourse" extends="userPackage">
+		<action name="*PotCourse" class="potCourseAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/dict/{1}.html</result>
+		</action>
+	</package>
+	<!-- 基础数据 -->
+	<package name="dict" namespace="/dict" extends="userPackage">
+		<action name="*CourseType" class="courseTypeAction" method="{1}"></action>
+		<action name="*Unit" class="unitAction" method="{1}"></action>
+		<action name="*Warehouse" class="warehouseAction" method="{1}"></action>
+		<action name="*Supplier" class="supplierAction" method="{1}"></action>
+		<action name="*CommodityType" class="commodityTypeAction" method="{1}"></action>
+		<action name="*Course" class="courseAction" method="{1}"></action>
+		<action name="*FeeItem" class="feeItemAction" method="{1}"></action>
+		<action name="*Media" class="mediaAction" method="{1}"></action>
+		<action name="*PotentialStuStatus" class="potentialStuStatusAction" method="{1}"></action>
+		<action name="*Holiday" class="holidayAction" method="{1}"></action>
+		<action name="*Classroom" class="classroomAction" method="{1}"></action>
+		<action name="*Commodity" class="commodityAction" method="{1}"></action>
+		<action name="*PeriodTime" class="periodTimeAction" method="{1}"></action>
+		<action name="*Account" class="accountAction" method="{1}"></action>
+		<action name="*IncomeClass" class="incomeClassAction" method="{1}"></action>
+		<action name="*RewPunType" class="rewPunTypeAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/dict/{1}.html</result>
+		</action>
+	</package>
+	<!-- 人事管理 -->
+	<package name="employee" namespace="/employee" extends="userPackage">
+		<action name="*Employee" class="employeeAction" method="{1}"></action>
+		<action name="*RewPun" class="rewPunAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/employee/{1}.html</result>
+		</action>
+	</package>
+	<!-- 仓库管理 -->
+	<package name="warehouse" namespace="/warehouse" extends="userPackage">
+		<action name="*RecRej" class="recRejAction" method="{1}"></action>
+		<action name="*Store" class="storeAction" method="{1}"></action>
+		<action name="*UseCommodity" class="useCommodityAction" method="{1}"></action>
+		<action name="*StoreTuneOut" class="storeTuneOutAction" method="{1}"></action>
+		<action name="*Scrapped" class="scrappedAction" method="{1}"></action>
+		<action name="*ReturnCommodity" class="returnCommodityAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/warehouse/{1}.html</result>
+		</action>
+	</package>
+	<!-- 客服管理 -->
+	<package name="customerService" namespace="/customerService" extends="userPackage">
+		<action name="*Potential" class="potentialAction" method="{1}"></action>
+		<action name="*Reply" class="replyAction" method="{1}"></action>
+		<action name="*Student" class="studentAction" method="{1}"></action>
+		<action name="*ReplyStu" class="stuReplyAction" method="{1}"></action>
+		<action name="*Payment" class="paymentAction" method="{1}"></action>
+		<action name="*Bill" class="billAction" method="{1}"></action>
+		<action name="*Detail" class="billDetailAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/customerService/{1}.html</result>
+		</action>
+	</package>
+	<!-- 教务管理 -->
+	<package name="academic" namespace="/academic" extends="userPackage">
+		<action name="*Class" class="classAction" method="{1}"></action>
+		<action name="*LessonDegree" class="lessonDegreeAction" method="{1}"></action>
+		<action name="*Student" class="studentAction" method="{1}"></action>
+		<action name="*BillDetail" class="billDetailAction" method="{1}"></action>
+		<action name="*Leave" class="leaveAction" method="{1}"></action>
+		<action name="*Change" class="changeAction" method="{1}"></action>
+		<action name="*Attend" class="attendAction" method="{1}"></action>
+		<action name="*Bill" class="billAction" method="{1}"></action>
+		<action name="*Payment" class="paymentAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/academic/{1}.html</result>
+		</action>
+	</package>
+	<!-- 选班 -->
+	<package name="stuClass" namespace="/stuClass" extends="userPackage">
+		<action name="*StuClass" class="stuClassAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/stuClass/{1}.html</result>
+		</action>
+	</package>
+	<!-- 财务 -->
+	<package name="finance" namespace="/finance" extends="userPackage">
+		<action name="*Payment" class="paymentAction" method="{1}"></action>
+		<action name="*Student" class="studentAction" method="{1}"></action>
+		<action name="*Bill" class="billAction" method="{1}"></action>
+		<action name="*Detail" class="billDetailAction" method="{1}"></action>
+		<action name="*Income" class="incomeAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/finance/{1}.html</result>
+		</action>
+	</package>
+	<!-- 学生端 -->
+	<package name="student" namespace="/student" extends="studentPackage">
+		<action name="*Payment" class="paymentAction" method="{1}"></action>
+		<action name="*Student" class="studentAction" method="{1}"></action>
+		<action name="*Bill" class="billAction" method="{1}"></action>
+		<action name="*Detail" class="billDetailAction" method="{1}"></action>
+		<action name="*PayLog" class="paymentLogAction" method="{1}"></action>
+		<action name="modifyPwd" class="studentAction" method="modifyPwd"></action>
+		<action name="*StuClass" class="stuClassAction" method="{1}"></action>
+		<action name="*LessionDegree" class="lessonDegreeAction" method="{1}"></action>
+		<action name="*Change" class="changeAction" method="{1}"></action>
+		<action name="*Leave" class="leaveAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/student/{1}.html</result>
+		</action>
+	</package>
+	<!-- 教师端 -->
+	<package name="teacher" namespace="/teacher" extends="userPackage">
+		<action name="*Leave" class="leaveAction" method="{1}"></action>
+		<action name="*Class" class="classAction" method="{1}"></action>
+		<action name="*LessonDegree" class="lessonDegreeAction" method="{1}"></action>
+		<action name="*Student" class="studentAction" method="{1}"></action>
+		<action name="*">
+			<result>/WEB-INF/teacher/{1}.html</result>
+		</action>
+	</package>
+	
+	<package name="common" namespace="/common" extends="stuUserPackage">
+		<action name="*Common" class="commonAction" method="{1}"></action>
+	</package>
+	<package name="global" namespace="/" extends="stuUserPackage">
+		<action name="main">
+			<result>/WEB-INF/main.html</result>
+		</action>
+		<action name="mainStu">
+			<result>/WEB-INF/mainStu.html</result>
+		</action>
+	</package>
+</struts>

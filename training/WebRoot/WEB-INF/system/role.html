@@ -1,0 +1,27 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="roleInit"  id="${id}">
+	<div data-options="region:'north',border:false"  class="queryContent" id="queryContent_${id}">
+		角色名：&nbsp;&nbsp;<input name="roleName" id="roleNameSearch" type="text" size="12"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="search" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="editDialog_${id}">
+		<form method="post" name="editForm" id="editForm_${id}">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td  class="tdFirstTitle">角色名：</td>
+					<td  class="tdFirstContent">
+						<input type="text" name="roleName" id = "roleName" class="contentInput" />
+						<input type="hidden" name="roleId"  />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+	<div id="roleRightDialog_${id}">
+		<div id="roleRightTree"></div>
+	</div>
+</div>

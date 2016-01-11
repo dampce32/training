@@ -1,0 +1,48 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="userInit" id="${id}">
+	<div region="north" style="height: 40px;padding:6px" border="false" class="queryContent" id="queryContent_${id}">
+  		登录名：&nbsp;&nbsp;<input type="text" id="userCodeSearch" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		    姓名：&nbsp;&nbsp;<input type="text" id="userNameSearch" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		    校区：&nbsp;&nbsp;<input type="text" id="schoolSearch" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		    <a href="#" class="easyui-linkbutton" id="search"  data-options="iconCls:'icon-search'">查询</a>
+  	</div>
+  	<div data-options="region:'center',border:false">
+		<div id="viewList_${id}"></div>
+	</div>
+	
+	<div id="editDialog_${id}">
+		<form method="post" name="editForm" id="editForm_${id}">
+			<input type="hidden" name="userId" id="userId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">用户名称：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="userName" id="userName" class="contentInput" /> 
+						<span style="color: red;">*</span>
+					</td>
+					
+				</tr>
+				<tr>
+					<td class="tdTitle">用户登录名：</td>
+					<td class="tdContent">
+						<input type="text"  name="userCode" id="userCode" class="contentInput" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">校区：</td>
+					<td  class="tdContent">
+						<input type="text" id="school"  class="contentInput" />
+						<span style="color: red;">*</span>
+						<input type="hidden" name="school.schoolId" id="schoolId" />
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="userRoleDialog_${id}">
+		<div id="userRoleList_${id}"></div>
+	</div>
+	<div id="userRightDialog_${id}">
+		<div id="userRightTree_${id}"></div>
+	</div>
+</div>

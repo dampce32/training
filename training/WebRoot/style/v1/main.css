@@ -1,0 +1,48 @@
+#index-north{
+	height:28px;
+	overflow:hidden;
+}
+#index-north-bd-right{
+padding:3px;
+background:#fafafa;}
+#index-left{
+width:180px;
+padding1:1px;
+}
+#index-left a{
+text-decoration:none}
+#index-south span{
+width:100%;
+display:block;
+text-align:center}
+
+.tdFirstTitle{
+	text-align: right;	
+	padding: 10px 0px 0px 15px;
+}
+.tdFirstContent{
+	padding-top: 10px;
+}
+
+.contentInput{
+	width: 250px
+}
+
+.tdTitle{
+	text-align: right;	
+	padding: 5px 0px 0px 15px;
+}
+.tdContent{
+	padding-top: 5px;
+}
+.inputField{
+	width: 250px
+}
+.queryContent{
+	height: 33px;
+	overflow: hidden;
+	padding: 5px 0px 0px 5px;
+}
+.queryInput{
+	width: 120px
+}

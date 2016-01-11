@@ -1,0 +1,79 @@
+<div id="information">
+	<div data-options="region:'center',border:false" style="width: 100%;height: 100%">
+		<p style="text-align:center;hyphenate:auto;font-family:黑体;font-size:14pt;margin: 30px">
+			<span style="font-weight:bold;">班级基本信息</span>
+		</p>
+		<form id="classInfoForm">
+			<table border="0" cellpadding="2" cellspacing="1" style="width: 100%">
+				<tr>
+					<td class="tdTitle">编号：</td>
+					<td>
+						<input type="text" id="classId" style="width: 250px;border: 0px" readonly="readonly" />
+					</td>
+					<td class="tdTitle">总课时：</td>
+					<td>
+						<input type="text" id="lessons" style="width: 250px;border: 0px" readonly="readonly" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">班级名称：</td>
+					<td>
+						<input type="text" id="className" style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+					<td class="tdTitle">开课日期：</td>
+					<td>
+						<input type="text" id="startDate" style="width: 90px;border: 1px" readonly="readonly"/>
+						至<input type="text" id="endDate" style="width: 90px;border: 1px" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">课程：</td>
+					<td>
+						<input type="text" id="courseName" style="width: 250px;border: 0px" readonly="readonly" />
+					</td>
+					<td class="tdTitle">上课规律：</td>
+					<td>
+						<input type="text" id="timeRule" style="width: 250px;border: 0px" readonly="readonly" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">主讲老师：</td>
+					<td>
+						<input type="text" id="teacherName" style="width: 250px;border: 0px" readonly="readonly" />
+					</td>
+					<td class="tdTitle">课程进度：</td>
+					<td>
+						<span id="showCourseProgress"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">教室：</td>
+					<td>
+						<input type="text" id="classroomName" style="width: 250px;border: 0px" readonly="readonly" />
+					</td>
+					<td class="tdTitle">招生比例：</td>
+					<td>
+						<span id="showStuCount"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课校区：</td>
+					<td>
+						<input type="text" id="schoolName" style="width: 250px;border: 0px" readonly="readonly" />
+					</td>
+					<td class="tdTitle">出勤率：</td>
+					<td>
+						<span id="showAttendance"></span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">班级介绍：</td>
+					<td colspan="3">
+						<textarea style="width: 600px; height: 120px" id="note" readonly="readonly">
+					</textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

@@ -1,0 +1,443 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="myProductInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		日期：&nbsp;&nbsp;<input id="billDateBeginSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>
+		至&nbsp;&nbsp;<input id="billDateEndSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+		<input type="hidden" id="studentId" /> 
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList"></div>
+	</div>
+	<div id="editReturnCourseDialog">
+		<form id = "editReturnCourseForm" method="post">
+			<input type="hidden" name="billId" id="billId" />
+			<input type="hidden" name="billDetail" id="billDetail" />
+			<input type="hidden" name="billType" id="billType" />
+			<input type="hidden" name="student.studentId" id="studentId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">单号：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="billCode" id="billCode"  style="width: 250px;border:0px" class="contentInput" readonly="readonly"  />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">日期：</td>
+					<td class="tdContent">
+						<input type="text" name="billDate" id="billDate" class="contentInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+						<span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">总价：</td>
+					<td class="tdContent">
+						<input type="text" name="pay" id="pay"  style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">扣除：</td>
+					<td class="tdContent">
+						<input type="text" name="favourable" id="favourable"  style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+					<td class="tdTitle">金额：</td>
+					<td class="tdContent">
+						<input type="text" name="payed" id="payed"  style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">办理校区：</td>
+					<td class="tdContent">
+						<input type="text" name="school.schoolId" id="school" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+					<td class="tdTitle">经办人：</td>
+					<td class="tdContent">
+						<input type="text" name="user.userId" id="user" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td colspan="3" style="padding-bottom: 5px;padding-top: 5px">
+						<textarea  style="width: 605px;height:100" name="note" id="note"></textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<div id="ReturnCourse"></div>
+	</div>
+	<div id="selectClassTypeDialog">
+		<center style="margin-top:20px">
+			<div style="margin:15px"><input type="radio" name="classType" id="selected" value="0"/>选择已选班级</div>
+			<div style="margin:15px"><input type="radio" name="classType" value="1"/>开设一对一班</div>
+			<div style="margin:15px"><input type="radio" name="classType" value="2"/>选择一对多班</div>
+		</center>
+	</div>
+	<div id="selectedDialog">
+		<form method="post" name="selectedForm" id="selectedForm">
+			<input type="hidden" name="stuClassId" id="stuClassId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">选班：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="clazz.classId" id="class" style="width:200px"/>
+						<span style="color:red">*</span>
+						按状态筛选：
+						<select id="scStatus" class="easyui-combobox" style="width:100px" data-options="editable:false">
+							<option value="1">正常</option>
+							<option value="0">所有</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">课时：</td>
+					<td class="tdContent">
+						<input type="hidden" name="lessons" id="lessons"/>
+						<input type="text" id="showLessons" style="width:200px" disabled="disabled"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">类型：</td>
+					<td class="tdContent">
+						<select name="continueReg" id="continueReg" class="easyui-combobox" style="width:200px" data-options="editable:false"  >
+							<option value="0">试听</option>
+							<option value="1">新增</option>
+							<option value="2">续报</option>
+						</select>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">经办人：</td>
+					<td class="tdContent">
+						<input type="text" name="user.userId" id="user" style="width:200px"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<div id="selectedClassInfoPanel" class="easyui-panel">
+			<form method="post" name="selectedClassInfoForm" id="selectedClassInfoForm">
+				<table border="0" cellpadding="0" cellspacing="0">
+					<tr>
+						<td class="tdTitle">班级名称：</td>
+						<td class="tdContent">
+							<input type="text" name="className" style="width:150;border:0" readonly="readonly">
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">开课时间：</td>
+						<td class="tdContent">
+							<input type="text" name="startDate" style="width:150;border:0" readonly="readonly">
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">上课规律：</td>
+						<td class="tdContent">
+							<input type="text" name="timeRule" style="width:150;border:0" readonly="readonly">
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">主讲老师：</td>
+						<td class="tdContent">
+							<input type="text" name="userName" style="width:150;border:0" readonly="readonly">
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">教室：</td>
+						<td class="tdContent">
+							<input type="text" name="classroomName" style="width:150;border:0" readonly="readonly">
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">招生比例：</td>
+						<td class="tdContent">
+							<span id="showStuCount"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">课时进度：</td>
+						<td class="tdContent">
+							<span id="showCourseProgress"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">选班状态：</td>
+						<td class="tdContent">
+							<input type="text" id="oldScStatus" style="width:150;border:0" readonly="readonly">
+						</td>
+					</tr>
+				</table>
+			</form>
+		</div>
+	</div>
+	<div id="oneToOneDialog">
+		<form method="post" name="oneToOneForm" id="oneToOneForm">
+			<input type="hidden" name="student.studentId" id="studentId"/>
+			<input type="hidden" name="clazz.classId" id="classId"/>
+			<input type="hidden" name="clazz.course.courseId" id="courseId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">班级名称：</td>
+					<td class="tdFirstContent">
+						<input type="text"  name="clazz.className" id="className" style="width:200px"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">课程：</td>
+					<td class="tdContent">
+						<input type="hidden" name="clazz.course.courseName" id="courseName"/>
+						<input type="text" id="showCourseName" style="width:200px" disabled="disabled"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">开课日期：</td>
+					<td class="tdContent">
+						<input type="text"  name="clazz.startDate" id="startDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" style="width:200px" class="Wdate"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">主讲老师：</td>
+					<td class="tdContent">
+						<input type="text"  name="clazz.teacher.userId" id="teacher" style="width:200px"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课规律：</td>
+					<td class="tdContent">
+						<input type="text"  name="clazz.timeRule" id="timeRule" style="width:200px"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课地点：</td>
+					<td class="tdContent">
+						<input type="text"  name="lessonSchool.schoolId" id="lessonSchool" style="width:200px"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">教室：</td>
+					<td class="tdContent">
+						<input type="text"  name="clazz.classroom.classroomId" id="classroom" style="width:200px"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">每课时：</td>
+					<td class="tdContent">
+						<input type="text"  name="clazz.lessonMinute" id="lessonMinute" style="width:200px"/>
+						<span style="color:red">*</span>分钟
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">每课时提成：</td>
+					<td class="tdContent">
+						<input type="text"  name="clazz.lessonCommission" id="lessonCommission" style="width:200px"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">课时：</td>
+					<td class="tdContent">
+						<input type="hidden" name="lessons" id="lessons"/>
+						<input type="text" id="showLessons" style="width:200px" disabled="disabled"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">选班日期：</td>
+					<td class="tdContent">
+						<input type="text"  name="selectDate" id="selectDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" style="width:200px" class="Wdate"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">类型：</td>
+					<td class="tdContent">
+						<select name="continueReg" id="continueReg" class="easyui-combobox" style="width:200px" data-options="editable:false"  >
+							<option value="0">试听</option>
+							<option value="1">新增</option>
+						</select>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">报名点：</td>
+					<td class="tdContent">
+						<input type="text"  name="selectSchool.schoolId" id="selectSchool" style="width:200px"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">经办人：</td>
+					<td class="tdContent">
+						<input type="text"  name="user.userId" id="user" style="width:200px"/>
+						<span style="color:red">*</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<div id="oneToManyDialog">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr style="padding-top:10px">
+				<td class="tdFirstTitle" rowspan="2">
+					<form method="post" name="oneToManyForm" id="oneToManyForm">
+						<input type="hidden" name="stuClassId" id="stuClassId"/>
+						<input type="hidden" name="student.studentId" id="studentId"/>
+						<input type="hidden" name="clazz.className" id="className"/>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td class="tdTitle">上课校区：</td>
+								<td class="tdContent">
+									<input type="text" class="school" name="lessonSchool.schoolId" id="lessonSchool" style="width:262px"/>
+									<span style="color:red">*</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">班级筛选：</td>
+								<td class="tdContent">
+									<table border="0" cellpadding="0" cellspacing="0">
+										<tr>
+											<td class="tdTitle">状态：</td>
+											<td class="tdContent">
+												<input type="radio" value="0" name="lessonStatus"/>未开课
+												<input type="radio" value="1" name="lessonStatus"/>已开课
+											</td>
+										</tr>
+										<tr>
+											<td class="tdTitle">讲师：</td>
+											<td class="tdContent">
+												<input type="text" id="teacher" style="width:150px"/>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">班级名称：</td>
+								<td class="tdContent">
+									<input type="text" name="clazz.classId" id="class" style="width:262px" />
+									<span style="color:red">*</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">我的课时：</td>
+								<td class="tdContent">
+									<input type="hidden" name="courseProgress" id="courseProgress"/>
+									<input type="hidden" name="lessons" id="lessons"/>
+									<div></div>
+									<span id="showProgress"></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">状态：</td>
+								<td class="tdContent">
+									<select name="scStatus" id="scStatus" class="easyui-combobox" style="width:262px" data-options="editable:false"  >
+										<option value="1">正常</option>
+										<option value="2">插班</option>
+										<option value="3">转班</option>
+										<option value="4">休学</option>
+										<option value="5">退学</option>
+										<option value="6">弃学</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">选班日期：</td>
+								<td class="tdContent">
+									<input type="text" name="selectDate" id="selectDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" style="width:262px" class="Wdate"/>
+									<span style="color:red">*</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">类型：</td>
+								<td class="tdContent">
+									<select name="continueReg" id="continueReg" class="easyui-combobox" style="width:262px" data-options="editable:false"  >
+										<option value="0">试听</option>
+										<option value="1">新增</option>
+										<option value="2">续报</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">备注：</td>
+								<td class="tdContent">
+									<textarea name="note" id="note" style="width:262px;height:100px"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">报名点：</td>
+								<td class="tdContent">
+									<input type="text" class="school" name="selectSchool.schoolId" id="selectSchool" style="width:262px"/>
+									<span style="color:red">*</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">经办人：</td>
+								<td class="tdContent"> 
+									<input type="text" name="user.userId" id="user" style="width:262px"/>
+									<span style="color:red">*</span>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</td>
+				<td style="padding-top:10px;padding-left:10px">
+					<div id="classInfoPanel" class="easyui-panel">
+						<form method="post" name="classInfoForm" id="classInfoForm">
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td class="tdTitle">班级名称：</td>
+									<td class="tdContent">
+										<input type="text" name="className" style="width:150;border:0" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">开课时间：</td>
+									<td class="tdContent">
+										<input type="text" name="startDate" style="width:150;border:0" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">上课规律：</td>
+									<td class="tdContent">
+										<input type="text" name="timeRule" style="width:150;border:0" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">主讲老师：</td>
+									<td class="tdContent">
+										<input type="text" name="userName" style="width:150;border:0" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">教室：</td>
+									<td class="tdContent">
+										<input type="text" name="classroomName" style="width:150;border:0" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">招生比例：</td>
+									<td class="tdContent">
+										<span id="showStuCount"></span>
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">课时进度：</td>
+									<td class="tdContent">
+										<span id="showCourseProgress"></span>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="height:130"></td>
+			</tr>
+		</table>
+	</div>
+</div>

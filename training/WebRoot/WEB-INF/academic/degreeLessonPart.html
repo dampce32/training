@@ -1,0 +1,271 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="degreeLessonPartInit"  id="${id}">
+	<input type="hidden" id="sRschoolId"/>
+	<input type="hidden" id="sRclassId"/>
+	<input type="hidden" id="sRteacherId"/>
+	<input type="hidden" id="sRclassroomId"/>
+	<input type="hidden" id="sRlessons"/>
+	<input type="hidden" id="sRarrangeLessons"/>
+	<input type="hidden" id="sRlessonMinute"/>
+	<form method="post" name="classTableForm" id="classTableForm">
+		<div data-options="region:'north',border:false,split:true,title:'班级信息'" style="height: 100">
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">班号：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="classId" id="classId" style="width: 100px; border:0" size="40" readonly="readonly"/>
+					</td>
+					<td class="tdFirstTitle">班级名称：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="className" id="className" style="width: 200px; border:0" size="40" readonly="readonly"/>
+					</td>
+					<td class="tdFirstTitle">每课分钟：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="lessonMinute" id="lessonMinute" style="width: 100px; border:0" size="10" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">总课时：</td>
+					<td class="tdContent">
+						<input type="text" name="lessons" id="lessons" style="width: 100px; border:0" size="10" readonly="readonly"/>
+					</td>
+					<td class="tdTitle">开课时间：</td>
+					<td class="tdContent">
+						<input type="text" name="startDate" id="startDate" style="width: 100px;border:0" size="40" readonly="readonly"/>
+					</td>
+					<td class="tdTitle">上课规律：</td>
+					<td class="tdContent">
+						<input type="text" name="timeRule" id="timeRule" style="width: 300px; border:0" readonly="readonly" />
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div data-options="region:'center',border:false,title:'排课管理'" style="width: 100%; height: 100%;">
+			<div class="easyui-layout" data-options="fit:true">
+				<div data-options="region:'center',border:false" style="width: 100%; height:100%">
+					<div id="degreeList"></div>
+				</div>
+				<div data-options="region:'south',border:false" style="height: 32">
+					<div class="easyui-pagination" id="degreePager" style="background:#efefef;border:1px solid #ccc;"></div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<div id="singleDegreeDialog">
+		<form method="post" name="singleDegreeForm" id="singleDegreeForm">
+			<input type="hidden" name="lessonDegreeId" id ="lessonDegreeId" />
+			<input type="hidden" name="clazz.classId" id ="classId" />
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">本课主题：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="subject" id="subject" style="width: 250px" size="40">
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课日期：</td>
+					<td class="tdContent">
+						<input type="text" id="lessonDegreeDate" name="lessonDegreeDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" style="width: 250px" size="40"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上下课时间：</td>
+					<td class="tdContent">
+						<input type="text" id="startTime" name="startTime" onFocus="WdatePicker({dateFmt:'HH:mm',maxDate:'#F{$dp.$D(\'endTime\');}'});" style="width: 115px;text-align: right;" size="40"/>
+						<span style="color: red;">*</span>
+						-<input type="text" id="endTime" name="endTime" onFocus="WdatePicker({dateFmt:'HH:mm',minDate:'#F{$dp.$D(\'startTime\');}'});" style="width: 115px;" size="40"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">可选时间段：</td>
+					<td class="tdContent">
+						<input type="text" id="doTime" name="doTime" style="width: 250px" size="40"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">本次课时：</td>
+					<td class="tdContent">
+						<input type="text" id="lessons" name="lessons" class="easyui-numberbox" style="width: 250px" size="40"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课类型：</td>
+					<td class="tdContent">
+						<input type="radio" name="lessonType" value="1"/>正常
+						<input type="radio" name="lessonType" value="0"/>补课
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课讲师：</td>
+					<td class="tdContent">
+						<input type="text" id="teacher" name="teacher.userId" style="width: 250px" size="40"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课教室：</td>
+					<td class="tdContent">
+						<input type="text" id="classroom" name="classroom.classroomId" style="width: 250px" size="40"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td class="tdContent">
+						<textarea id="note" name="note" style="width: 250px;height: 100px"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">经办人：</td>
+					<td class="tdContent">
+						<input type="text" id="user" name="user.userId" style="width: 250px" size="40"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+	<div id="autoDegreeDialog">
+		<form id="autoDegreeForm" method="post">
+			<input type="hidden" id="classId" name="clazz.classId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">
+						<p>排课参数：</p>
+						<p>&nbsp;</p>
+					</td>
+					<td class="tdFirstContent">
+						<p>
+							周期：<select id="week" class="easyui-combobox" style="width:150" data-options="editable:false"  >
+									<option value="0">周日</option>
+									<option value="1">周一</option>
+									<option value="2">周二</option>
+									<option value="3">周三</option>
+									<option value="4">周四</option>
+									<option value="5">周五</option>
+									<option value="6">周六</option>
+								</select>
+							时间段：<select id="groupType" class="easyui-combobox" style="width: 150px" data-options="editable:false" >					
+									<option value="0">春</option>
+									<option value="1">夏</option>
+									<option value="2">秋</option>
+									<option value="3">冬</option>
+								</select>
+								<input type="text" id="time" style="width: 150px" size="40"/>
+						</p>
+						<p>
+							讲师：<input type="text" id="teacher" style="width: 150px" size="40"/>
+							&nbsp;&nbsp;&nbsp;
+							教室：<input type="text" id="classroom" style="width: 150px" size="40"/>
+						</p>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle"></td>
+					<td class="tdContent" style="height:300px;padding-right: 20px;">
+						<div id="paramList"></div>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">排课起始日：</td>
+					<td class="tdContent">
+						<input type="text" id="firstDegreeDate" name="firstDegreeDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm'});" style="width: 200px" size="40"/>
+						<input type="hidden" id="nowDate" onFocus="WdatePicker({dateFmt:'%y-%M-%d'});" />
+						<span style="margin-left:20px">
+							可排课时数：
+							<input type="text" id="waitDegree" name="waitDegree" style="width: 100px;" size="40"/>
+						</span>
+						<span style="margin-left:50px">
+							排课完成度：
+							<input type="hidden" id="arrangeLessons"/>
+							<input type="hidden" id="lessons"/>
+							<span id="arrangeProgress" style="width: 100px"></span>
+						</span>
+					</td>
+				</tr>
+			</table>
+			<input type="hidden" id="params" name="params" />
+		</form>
+	</div>
+	<div id="pointNameDialog">
+		<div class="easyui-layout" data-options="fit:true">
+			<div data-options="region:'west',split:true,title:'学员名单'" style="width:120;">
+				<ul id="studentTree"></ul>
+			</div>
+			<div data-options="region:'center',title:'操作面板'" style="width: 100%;height: 100%">
+				<form method="post" id="lessonInfoForm" name="lessonInfoForm">
+					<input type="hidden" name="lessonDegreeId" id="lessonDegreeId"/>
+					<input type="hidden" name="endTime" id="endTime"/>
+					<input type="hidden" name="lessons" id="lessons"/>
+					<input type="hidden" name="teacher.userId" id="teacherId"/>
+					<input type="hidden" name="classroom.classroomId" id="classroomId"/>
+					<input type="hidden" name="user.userId" id="userId"/>
+					<input type="hidden" name="clazz.classId" id ="classId"/>
+					<input type="hidden" name="lessonType" id ="lessonType"/>
+					<table border="0" cellpadding="0" cellspacing="0">
+						<tr>
+							<td class="tdFirstTitle">上课日期：</td>
+							<td class="tdFirstContent">
+								<input type="text" name="lessonDegreeDate" id="lessonDegreeDate" style="width:100;border:0" readonly="readonly"/>
+								<input type="text" name="startTime" id="startTime" style="width:100;border:0" readonly="readonly"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">本课课题：</td>
+							<td class="tdContent">
+								<input type="text" name="subject" id="subject" style="width:350;"/>
+							</td>
+						</tr>
+						<tr>
+							<td class="tdTitle">备注/作业：</td>
+							<td class="tdContent">
+								<textarea name="note" id="note" style="width:400px;height:100px"></textarea>
+								<a href="#" class="easyui-linkbutton" id="workUpdate" style="margin-left:50" data-options="iconCls:'icon-edit'" style="cursor: pointer;">更 新</a>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+			<div data-options="region:'south',split:true" style="height:300">
+				<div class="easyui-layout" data-options="fit:true">
+					<div data-options="region:'center',border:false" style="width: 100%;height: 100%">
+						<div id="pointNameList"></div>
+					</div>
+					<div data-options="region:'south',border:false" style="height: 32">
+						<div class="easyui-pagination" id="pointNamePager" style="background:#efefef;border:1px solid #ccc;"></div>
+					</div>
+					<div id="savePointDialog">
+						<form method="post" id="savePointForm" name="savePointorm">
+							<input type="hidden" name="attendId" id="attendId"/>
+							<input type="hidden" name="lessonDegree.lessonDegreeId" id="lessonDegreeId"/>
+							<input type="hidden" name="lessonDegree.clazz.classId" id="classId"/>
+							<input type="hidden" name="lessonDegree.lessons" id="lessons"/>
+							<input type="hidden" name="lessonDegree.lessonType" id="lessonType"/>
+							<input type="hidden" name="lessonDegree.lessonStatus" id="lessonStatus"/>
+							<table border="0" cellpadding="2" cellspacing="1" style="width: 100%">
+								<tr>
+									<td class="tdTitle">状态：</td>
+									<td>
+										<input type="radio" name="status" value="0"/>出勤
+										<input type="radio" name="status" value="1"/>迟到
+										<input type="radio" name="status" value="2"/>早退
+										<input type="radio" name="status" value="3"/>旷课
+										<input type="radio" name="status" value="4"/>请假
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">备注：</td>
+									<td>
+										<input name="note" id="note" style="width:350px;"/>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

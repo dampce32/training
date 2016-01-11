@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>学员查询</title>
+	<link rel="stylesheet" type="text/css" href="style/common.css">
+	<link rel="stylesheet" type="text/css" href="style/v1/easyui/easyui.css">
+	<link rel="stylesheet" type="text/css" href="style/v1/icon.css">
+	
+	<link rel="stylesheet" type="text/css" href="style/v1/main.css">
+	<script type="text/javascript" src="js/common/jquery-1.7.2.min.js"></script>
+	<script type="text/javascript" src="js/common/jquery.easyui.min.js"></script>
+	<script type="text/javascript" src="js/common/easyui-lang-zh_CN.js"></script>
+	<script type="text/javascript" src="js/common/jquery.xLazyLoader.js"></script>
+	<script type="text/javascript" src="js/common/serializeForm.js"></script>
+	<script type="text/javascript" src="js/common/commons-ajaxclient.js"></script>
+	<script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+	<script type="text/javascript" src="js/common/csit.core.js"></script>
+	<script type="text/javascript" src="js/common/training.cache.js"></script>
+	<script type="text/javascript" src="js/common/dateUtil.js"></script>
+	<script type="text/javascript" src="js/main/mainStu.js"></script>
+
+  </head>
+  
+  <body class="easyui-layout" data-options="fit:true" >
+  		<div region="north" id="index-north" border="false">
+			<div  id="index-north-bd">
+				<div id="index-north-bd-left" class="f-l">
+	            	<span style="font-size: 25;padding-left: 22px">学员查询</span>
+	            </div>
+	            <div id="index-north-bd-right" class="f-r">
+	            	 <a href="#" class="easyui-linkbutton" iconCls="icon-edit" id="modifyPwdBtn">修改密码</a>
+	                 <a href="#" class="easyui-linkbutton" iconCls="icon-back" id="exitSystem">退出</a>
+	            </div>
+		    </div>
+	   </div>
+	   <div  region="center" id="tabs" class="easyui-tabs" border="false">
+			<div id="information" title="基本信息"></div>
+			<div id="accountInformation" title="账户信息"></div>
+			<div id="consumption" title="消费单"></div>
+			<div id="product" title="已购产品"></div>
+			<div id="clazz" title="选班信息"></div>
+			<div id="clazz" title="上课信息"></div>
+			<div id="clazz" title="异动信息"></div>
+			<div id="clazz" title="请假信息"></div>
+		</div>
+		<div id="modifyPwdDialog">
+			<form id="modifyPwdForm">
+					<table border="0" cellpadding="0" cellspacing="0" style="font-size: 12px">
+		     		<tr>
+		     			<td class="tdTitle">原密码:</td>
+		     			<td>
+		     				<input type="password" name ="password" id="password" style="width: 250px;">
+		     			</td>
+		     		</tr>
+		     		<tr>
+		     			<td class="tdTitle">新密码:</td>
+		     			<td>
+		     				<input type="password" name="newStuPwd" id="newStuPwd" style="width: 250px;">
+		     			</td>
+		     		</tr>
+		     		<tr>
+		     			<td class="tdTitle">重新输入新密码:</td>
+		     			<td>
+		     				<input type="password" name="newStuPwd2" id="newStuPwd2" style="width: 250px;">
+		     			</td>
+		     		</tr>
+		     	</table>
+			</form>
+		</div>
+  </body>
+</html>

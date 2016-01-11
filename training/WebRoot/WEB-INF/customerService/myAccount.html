@@ -1,0 +1,116 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="myAccountInit"  id="${id}">
+	<div data-options="region:'north',border:false" style="height: 70px;overflow: hidden;padding:5px" id="queryPaymentContent"> 
+		类型：&nbsp;&nbsp;<select id="paymentTypeSearch" class="easyui-combobox" name="paymentTypeSearch" class="queryInput" data-options="editable:false">  
+			    <option value="">全部</option>
+			    <option value="1">交费</option>
+			    <option value="2">退费</option>   
+			    <option value="3">借款 </option>
+			    <option value="4">扣除借款 </option>  
+			    <option value="5">业务扣费</option> 
+			    <option value="6">业务退费</option> 
+			</select>&nbsp;&nbsp;&nbsp;
+		日期：&nbsp;&nbsp;<input id="transactionDateBeginSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>
+		至&nbsp;<input id="transactionDateEndSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+		<input type="hidden" id="studentId" />
+		<a href="#" class="easyui-linkbutton" id="searchBtnPayment" data-options="iconCls:'icon-search'" style="cursor: pointer;">查询</a>
+		<div class = "easyui-panel" id="paymentPanel"  closed="false" style="padding: 3px;margin-top: 6px;height: 30px">
+			<table border="0" cellpadding="0" cellspacing="0">
+              		<tr>
+					<td class="table-title" style="width:80px"> 可用余额：</td>
+					<td class="table-value"> 
+						<input type="text" name="availableMoney" id="availableMoney" style="width:100px;border: 0px;color: red;" readonly="readonly">
+					</td>
+					<td class="table-title" style="width:80px"> 消费总额：</td>
+					<td class="table-value"> 
+						<input type="text" name="consumedMoney" id="consumedMoney" style="width:100px;border: 0px" readonly="readonly">
+					</td>
+					<td class="table-title" style="width:80px"> 借款金额：</td>
+					<td class="table-value"> 
+						<input type="text" name="arrearageMoney" id="arrearageMoney" style="width:100px;border: 0px" readonly="readonly">
+					</td>
+					<td class="table-title" style="width:80px"> 借款到期：</td>
+					<td class="table-value"> 
+						<input type="text" name="creditExpiration" id="creditExpiration" style="width:100px;border: 0px" readonly="readonly">
+					</td>
+				</tr>
+           	</table>
+		</div>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="paymentList"></div>
+	</div>
+	<div id="editPaymentDialog">
+		<form id = "editPaymentForm" method="post">
+			<input type="hidden" name="paymentId" id="paymentId" />
+			<input type="hidden" name="confirmCreditExpiration" id="confirmCreditExpiration"/>
+			<input type="hidden" name="student.studentId" id="student" />
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">交费类型：</td>
+					<td class="tdFirstContent">
+						<select id="paymentType" class="easyui-combobox" name="paymentType" style="width:250px;" class="contentInput">  
+						    <option value="1">交费</option>  
+						    <option value="3">借款 </option>
+						    <option value="4">扣除借款 </option>  
+						</select><span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr id="paywaytr">
+					<td class="tdTitle">方式：</td>
+					<td class="tdContent">
+						<select id="payway" class="easyui-combobox" name="payway" style="width:250px;"  data-options="editable:false">  
+						    <option value="1">现金</option>  
+						    <option value="2">刷卡 </option>
+						    <option value="3">转账 </option>
+						    <option value="4">支票</option>  
+						    <option value="5">网银 </option>
+						    <option value="6">支付宝 </option>  
+						    <option value="7">其它 </option>
+						</select><span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">金额：</td>
+					<td class="tdContent">
+						<input type="text" name="payMoney" id="payMoney" class="easyui-numberbox" data-options="precision:2" style="width: 250px" size="40" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">日期：</td>
+					<td class="tdContent">
+						<input type="text" name="transactionDate" id="transactionDate" class="contentInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td class="tdContent">
+						<input type="text" name="note" id="note" class="contentInput" />
+					</td>
+				</tr>
+				<tr id="creditExpirationtr">
+					<td class="tdTitle">借款到期：</td>
+					<td class="tdContent">
+						<input type="text" name="creditExpiration" id="creditExpiration" class="contentInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">交费点：</td>
+					<td class="tdContent">
+						<input type="text" id="school" name="school.schoolId" class="contentInput" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">收费文员：</td>
+					<td class="tdContent">
+						<input type="text" id="user" name="user.userId" class="contentInput" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>

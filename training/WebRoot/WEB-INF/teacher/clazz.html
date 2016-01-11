@@ -1,0 +1,130 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="myClassInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		班级名称：&nbsp;&nbsp;<input id="classNameSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		校区：&nbsp;&nbsp;<input id="schoolSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="viewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	<div id="editDialog">
+		<form method="post" name="editForm" id="editForm">
+			<input type="hidden" name="classId" id = "classId" >
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">班级名称：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="className" id="className" readonly="readonly" class="contentInput" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">课程类型：</td>
+					<td class="tdContent">
+						<input type="text" name="course.courseType.courseTypeId" readonly="readonly" id="courseType"  class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">课程名称：</td>
+					<td class="tdContent">
+						<input type="text" name="course.courseId" id="course"  readonly="readonly" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">授课方式：</td>
+					<td class="tdContent">
+						<select name="classType" id="classType" class="easyui-combobox" disabled="disabled" style="width: 250px" data-options="editable:false" >					
+							<option value="0">一对多教学</option>
+							<option value="1">一对一教学</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">主讲老师：</td>
+					<td class="tdContent">
+						<input type="text" name="teacher.userId" id="teacher" readonly="readonly"  class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">开课时间：</td>
+					<td class="tdContent">
+						<input type="text" name="startDate" id="startDate" readonly="readonly" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">结束时间：</td>
+					<td class="tdContent">
+						<input type="text" name="endDate" id="endDate" readonly="readonly"  class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">上课规律：</td>
+					<td class="tdContent">
+						<input type="text" name="timeRule" id="timeRule" readonly="readonly" class="contentInput"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">校区：</td>
+					<td class="tdContent">
+						<input type="text" name="school.schoolId" id="school" class="contentInput" readonly="readonly" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">计划招生数：</td>
+					<td class="tdContent">
+						<input type="text" name="planCount" id="planCount" class="easyui-numberbox" readonly="readonly" style="width: 250px"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">教室：</td>
+					<td class="tdContent">
+						<input type="text" name="classroom.classroomId" id="classroom" readonly="readonly" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">总课时：</td>
+					<td class="tdContent">
+						<input type="text" name="lessons" id="lessons" class="easyui-numberbox" readonly="readonly" style="width: 250px" />
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">每课时：</td>
+					<td class="tdContent">
+						<input type="text" name="lessonMinute" id="lessonMinute" class="easyui-numberbox" readonly="readonly" style="width: 250px"/>
+						<span style="color: red;">*</span>分钟
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">每课时提成：</td>
+					<td class="tdContent">
+						<input type="text" name="lessonCommission" id="lessonCommission" class="easyui-numberbox" data-options="precision:2" style="width: 250px" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">班级介绍：</td>
+					<td class="tdContent">
+						<input type="text" name="note" id="note" class="contentInput" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">建立者：</td>
+					<td class="tdContent">
+						<input type="text" name="creater.userId" id="creater"  class="contentInput" readonly="readonly"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>

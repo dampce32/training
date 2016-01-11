@@ -1,0 +1,307 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="academicStuClassInfoInit"  id="${id}">
+	<div data-options="region:'center',border:false" style="width: 100%;height: 100%">
+		<div id="stuClassInfoList"></div>
+	</div>
+	<input type="hidden" id="selectRowStudentId"/>
+	<div id="oneToManyDialog">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr style="padding-top:10px">
+				<td class="tdFirstTitle" rowspan="2">
+					<form method="post" name="oneToManyForm" id="oneToManyForm">
+						<input type="hidden" name="stuClassId" id="stuClassId"/>
+						<input type="hidden" name="student.studentId" id="studentId"/>
+						<input type="hidden" name="clazz.className" id="className"/>
+						<table border="0" cellpadding="0" cellspacing="0">
+							<tr>
+								<td class="tdTitle">上课校区：</td>
+								<td class="tdContent">
+									<input type="text" class="school" name="lessonSchool.schoolId" id="lessonSchool" style="width:200px"/>
+									<span style="color:red">*</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">班级筛选：</td>
+								<td class="tdContent">
+									<table border="0" cellpadding="0" cellspacing="0">
+										<tr>
+											<td class="tdTitle">状态：</td>
+											<td class="tdContent">
+												<input type="radio" value="0" name="lessonStatus"/>未开课
+												<input type="radio" value="1" name="lessonStatus"/>已开课
+											</td>
+										</tr>
+										<tr>
+											<td class="tdTitle">讲师：</td>
+											<td class="tdContent">
+												<input type="text" id="teacher" style="width:150px"/>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">班级名称：</td>
+								<td class="tdContent">
+									<input type="text" name="clazz.classId" id="class" style="width:200px" />
+									<span style="color:red">*</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">我的课时：</td>
+								<td class="tdContent">
+									<input type="hidden" name="courseProgress" id="courseProgress"/>
+									<input type="hidden" name="lessons" id="lessons"/>
+									<div></div>
+									<span id="showProgress"></span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">状态：</td>
+								<td class="tdContent">
+									<select name="scStatus" id="scStatus" class="easyui-combobox" style="width:200px" data-options="editable:false"  >
+										<option value="1">正常</option>
+										<option value="2">插班</option>
+										<option value="3">转班</option>
+										<option value="4">休学</option>
+										<option value="5">退学</option>
+										<option value="6">弃学</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">选班日期：</td>
+								<td class="tdContent">
+									<input type="text" name="selectDate" id="selectDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" style="width:200px" class="Wdate"/>
+									<span style="color:red">*</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">类型：</td>
+								<td class="tdContent">
+									<select name="continueReg" id="continueReg" class="easyui-combobox" style="width:200px" data-options="editable:false"  >
+										<option value="0">试听</option>
+										<option value="1">新增</option>
+										<option value="2">续报</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">备注：</td>
+								<td class="tdContent">
+									<textarea name="note" id="note" style="width:200px;height:100px"></textarea>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">报名点：</td>
+								<td class="tdContent">
+									<input type="text" class="school" name="selectSchool.schoolId" id="selectSchool" style="width:200px"/>
+									<span style="color:red">*</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="tdTitle">经办人：</td>
+								<td class="tdContent"> 
+									<input type="text" name="user.userId" id="user" style="width:200px"/>
+									<span style="color:red">*</span>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</td>
+				<td style="padding-top:10px;padding-left:10px">
+					<div id="classInfoPanel" class="easyui-panel">
+						<form method="post" name="classInfoForm" id="classInfoForm">
+							<table border="0" cellpadding="0" cellspacing="0">
+								<tr>
+									<td class="tdTitle">班级名称：</td>
+									<td class="tdContent">
+										<input type="text" name="className" style="width:150;border:0" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">开课时间：</td>
+									<td class="tdContent">
+										<input type="text" name="startDate" style="width:150;border:0" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">上课规律：</td>
+									<td class="tdContent">
+										<input type="text" name="timeRule" style="width:150;border:0" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">主讲老师：</td>
+									<td class="tdContent">
+										<input type="text" name="userName" style="width:150;border:0" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">教室：</td>
+									<td class="tdContent">
+										<input type="text" name="classroomName" style="width:150;border:0" readonly="readonly">
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">招生比例：</td>
+									<td class="tdContent">
+										<span id="showStuCount"></span>
+									</td>
+								</tr>
+								<tr>
+									<td class="tdTitle">课时进度：</td>
+									<td class="tdContent">
+										<span id="showCourseProgress"></span>
+									</td>
+								</tr>
+							</table>
+						</form>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td style="height:130"></td>
+			</tr>
+		</table>
+	</div>
+	<div id="browseDialog">
+		<form method="post" id="browseForm">
+			<div id="stuClassPanel" class="easyui-panel">
+				<table border="0" cellpadding="2" cellspacing="1" style="width: 100%">
+					<tr>
+						<td class="tdTitle">学号：</td>
+						<td>
+							<input name="studentId" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">姓名：</td>
+						<td>
+							<input name="studentName" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">班号：</td>
+						<td>
+							<input name="classId" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">班级：</td>
+						<td>
+							<input name="className" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">选班日期：</td>
+						<td>
+							<input name="selectDate" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">选班状态：</td>
+						<td>
+							<input name="scStatus" id="scStatus" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">报名点：</td>
+						<td>
+							<input name="selectSchoolName" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">备注：</td>
+						<td>
+							<input name="note" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">经办人：</td>
+						<td>
+							<input name="userName" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			<div id="lessonPanel" class="easyui-panel">
+				<table border="0" cellpadding="2" cellspacing="1" style="width: 100%">
+					<tr>
+						<td class="tdTitle">上课地点：</td>
+						<td>
+							<input name="lessonSchoolName" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">课时进度：</td>
+						<td>
+							<span id="showProgress"></span>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">出勤次数：</td>
+						<td>
+							<input name="factCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">迟到次数：</td>
+						<td>
+							<input name="lateCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">早退次数：</td>
+						<td>
+							<input name="advanceCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">旷课次数：</td>
+						<td>
+							<input name="truancyCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">请假次数：</td>
+						<td>
+							<input name="leaveCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">补课次数：</td>
+						<td>
+							<input name="fillCount" style="border:0" readonly="readonly"/>
+						</td>
+					</tr>
+					<!-- 
+					<tr>
+						<td class="tdTitle">评价日期：</td>
+						<td>
+							<input name=""/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">成绩：</td>
+						<td>
+							<input name=""/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">等级：</td>
+						<td>
+							<input name=""/>
+						</td>
+					</tr>
+					<tr>
+						<td class="tdTitle">评价内容：</td>
+						<td>
+							<input name=""/>
+						</td>
+					</tr>
+					 -->
+				</table>
+			</div>
+		</form>
+	</div>
+</div>

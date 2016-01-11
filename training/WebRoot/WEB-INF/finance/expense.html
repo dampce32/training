@@ -1,0 +1,132 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="expenseInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryBillContent"> 
+	校区：&nbsp;&nbsp;<input id="schoolSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+	类型：&nbsp;&nbsp;<select id="billTypeSearch" class="easyui-combobox" data-options="editable:false" name="billTypeSearch" style="width:100px;">  
+			    <option value="">全部</option>
+			    <option value="1">购买</option>
+			    <option value="0">退货</option>   
+			</select>&nbsp;&nbsp;&nbsp;
+		日期：&nbsp;&nbsp;<input id="billDateBeginSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>
+		至<input id="billDateEndSearch" type="text" class="queryInput Wdate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBillBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="billList"></div>
+	</div>
+	<div id="editBillDialog">
+		<form id = "editBillForm" method="post">
+			<input type="hidden" name="billId" id="billId" />
+			<input type="hidden" name="billDetail" id="billDetail" />
+			<input type="hidden" name="cost" id="cost" />
+			<input type="hidden" name="billType" id="billType" />
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">消费单号：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="billCode" id="billCode"  style="width: 250px;border:0px" readonly="readonly"  />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">学号：</td>
+					<td class="tdContent">
+						<input type="text" name="student.studentId" id="studentId" style="width: 250px;border: 0px" readonly="readonly" />
+					</td>
+					<td class="tdTitle">姓名：</td>
+					<td class="tdContent">
+						<input type="text" name="studentName" id="studentName" style="width: 250px;border: 0px" readonly="readonly" />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">消费日期：</td>
+					<td class="tdContent">
+						<input type="text" name="billDate" id="billDate" style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+					<td class="tdTitle">应收金额：</td>
+					<td class="tdContent">
+						<input type="text" name="pay" id="pay"  style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">优惠金额：</td>
+					<td class="tdContent">
+						<input type="text" name="favourable" id="favourable"  style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+					<td class="tdTitle">实收金额：</td>
+					<td class="tdContent">
+						<input type="text" name="payed" id="payed"  style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">办理校区：</td>
+					<td class="tdContent">
+						<input type="text" name="school.schoolId" id="school" style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+					<td class="tdTitle">经办人：</td>
+					<td class="tdContent">
+						<input type="text" name="user.userId" id="user" style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td colspan="3" style="padding-bottom: 5px;padding-top: 5px" >
+						<textarea  style="width: 605px;height:100px" name="note" id="note" readonly="readonly"></textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<div id="detailList"></div>
+	</div>
+	<div id="editReturnCourseDialog">
+		<form id = "editReturnCourseForm" method="post">
+			<input type="hidden" name="billId" id="billId" />
+			<input type="hidden" name="billDetail" id="billDetail" />
+			<input type="hidden" name="billType" id="billType" />
+			<input type="hidden" name="student.studentId" id="studentId"/>
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">退货单号：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="billCode" id="billCode"  style="width: 250px;border:0px" readonly="readonly"  />
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">日期：</td>
+					<td class="tdContent">
+						<input type="text" name="billDate" id="billDate" style="width: 250px;border:0px" readonly="readonly"/>
+					</td>
+					<td class="tdTitle">总价：</td>
+					<td class="tdContent">
+						<input type="text" name="pay" id="pay"  style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">扣除：</td>
+					<td class="tdContent">
+						<input type="text" name="favourable" id="favourable"  style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+					<td class="tdTitle">金额：</td>
+					<td class="tdContent">
+						<input type="text" name="payed" id="payed"  style="width: 250px;border: 0px" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">办理校区：</td>
+					<td class="tdContent">
+						<input type="text" name="school.schoolId" id="school" style="width: 250px;border:0px" readonly="readonly"/>
+					</td>
+					<td class="tdTitle">经办人：</td>
+					<td class="tdContent">
+						<input type="text" name="user.userId" id="user" style="width: 250px;border:0px" readonly="readonly"/>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">备注：</td>
+					<td colspan="3" style="padding-bottom: 5px;padding-top: 5px">
+						<textarea  style="width: 605px;height:100" name="note" id="note" readonly="readonly"></textarea>
+					</td>
+				</tr>
+			</table>
+		</form>
+		<div id="ReturnCourse"></div>
+	</div>
+</div>

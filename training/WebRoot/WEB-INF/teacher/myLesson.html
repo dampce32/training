@@ -1,0 +1,10 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="myLessonInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		校区：&nbsp;&nbsp;<input id="schoolSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		日期：&nbsp;&nbsp;<input id="dateSearch" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="queryInput Wdate"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false">
+		<div id="weekTableList"></div>
+	</div>
+</div>

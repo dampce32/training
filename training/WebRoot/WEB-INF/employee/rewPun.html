@@ -1,0 +1,62 @@
+<div class="easyui-layout plugins" data-options="fit:true" ui="rewPunInit"  id="${id}">
+	<div data-options="region:'north',border:false" class="queryContent" id="queryContent">
+		员工：&nbsp;&nbsp;<input id="userSearch" type="text" class="queryInput"/>&nbsp;&nbsp;&nbsp;
+		日期：&nbsp;&nbsp;<input type="text" name="beginDate" id="beginDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="queryInput Wdate"/>
+		至&nbsp;<input type="text" name="endDate" id="endDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="queryInput Wdate"/>&nbsp;&nbsp;&nbsp;
+		<a href="#" class="easyui-linkbutton" id="searchBtn" data-options="iconCls:'icon-search'" style="cursor: pointer;">查 询</a>
+	</div>
+	<div data-options="region:'center',border:false" style="width: 100%;height: 100%">
+		<div id="viewList"></div>
+	</div>
+	<div data-options="region:'south',border:false" style="height: 32">
+		<div class="easyui-pagination" id="pager" style="background:#efefef;border:1px solid #ccc;"></div>
+	</div>
+	<div id="editDialog">
+		<form method="post" name="editForm" id="editForm">
+			<input type="hidden" name="rewPunId" id = "rewPunId" >
+			<table border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td class="tdFirstTitle">奖惩员工：</td>
+					<td class="tdFirstContent">
+						<input type="text" name="user.userId" id="user" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">奖惩类型：</td>
+					<td class="tdContent">
+						<input type="text" name="rewPunType.rewPunTypeId" id="rewPunType" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">奖惩金额：</td>
+					<td class="tdContent">
+						<input type="text" name="rewPunPrice" id="rewPunPrice" class="easyui-numberbox" data-options="precision:2" style="width: 250px"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">日期：</td>
+					<td class="tdContent">
+						<input type="text" name="rewPunDate" id="rewPunDate" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'});" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">录入员：</td>
+					<td class="tdContent">
+						<input type="text" name="handler.userId" id="handler" class="contentInput"/>
+						<span style="color: red;">*</span>
+					</td>
+				</tr>
+				<tr>
+					<td class="tdTitle">奖惩理由：</td>
+					<td class="tdContent">
+						<textarea  style="height:100px" name="note" id="note" class="contentInput"></textarea>
+					</td>
+				</tr>
+			</table>
+    	</form>
+	</div>
+</div>
